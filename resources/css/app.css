@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none;
+}
+
+/* ===========================================================
+   VARIABLES DE TEMA (MODO CLARO POR DEFECTO)
+   =========================================================== */
+:root {
+    --sidebar-bg-from: white;
+    --sidebar-bg-to: #e5e7eb;       /* gray-200 */
+    --sidebar-text: #1f2937;        /* gray-800 */
+    --sidebar-link: #374151;        /* gray-700 */
+    --sidebar-link-hover-bg: #d1d5db; /* gray-300 */
+}
+
+/* ===========================================================
+   MODO OSCURO
+   =========================================================== */
+.dark-theme {
+    --sidebar-bg-from: #0f0f0f;
+    --sidebar-bg-to: #1a1a1a;
+    --sidebar-text: #f3f4f6;           /* gray-100 */
+    --sidebar-link: #e5e5e5;
+    --sidebar-link-hover-bg: #333333;
+}
+
+/* ===========================================================
+   APLICACIÓN DE VARIABLES AL SIDEBAR
+   =========================================================== */
+.sidebar {
+    background: linear-gradient(to bottom, var(--sidebar-bg-from), var(--sidebar-bg-to));
+    color: var(--sidebar-text);
+}
+
+.sidebar a {
+    color: var(--sidebar-link);
+}
+
+.sidebar a:hover {
+    background-color: var(--sidebar-link-hover-bg);
+}
+
+.sidebar h2,
+.sidebar .footer,
+.sidebar button {
+    color: var(--sidebar-text);
+}
