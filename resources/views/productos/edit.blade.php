@@ -3,7 +3,7 @@
 @section('title', 'Editar Producto')
 
 @section('content')
-<div class="bg-white shadow-lg rounded-2xl p-6 max-w-3xl mx-auto mt-10">
+<div class="bg-white text-gray-900 shadow-lg rounded-2xl p-6 max-w-3xl mx-auto mt-10">
     
     <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Editar Producto</h2>
 

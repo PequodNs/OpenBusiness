@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('productos.edit');
+    return view('usuario.create');
 });
 
 

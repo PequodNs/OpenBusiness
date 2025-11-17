@@ -3,7 +3,7 @@
 @section('title', 'Historial')
 
 @section('content')
-<div class="bg-white shadow-lg rounded-2xl p-6">
+<div class="bg-white text-gray-900 shadow-lg rounded-2xl p-6">
 
     <!-- Encabezado: Título izquierda – Botón derecha -->
     <div class="mb-4 flex items-center justify-between">

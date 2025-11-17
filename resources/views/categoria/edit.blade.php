@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="max-w-lg mx-auto mt-10 bg-white shadow-lg border border-gray-300 rounded-xl p-6">
+<div class="max-w-lg mx-auto mt-10 bg-white text-gray-900 shadow-lg border border-gray-300 rounded-xl p-6">
   <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
     Editar Categoría
   </h2>

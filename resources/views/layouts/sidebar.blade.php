@@ -83,6 +83,13 @@
           Compras
         </a>
 
+        <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
+                  bg-[rgb(var(--color-sidebar))]
+                  text-[rgb(var(--color-text))]
+                  hover:bg-[rgb(var(--color-hover))]">
+          Usuarios
+        </a>
+
       </nav>
 
       <button class="mt-auto bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg font-semibold">
