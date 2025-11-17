@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="max-w-6xl mx-auto mt-10 bg-white shadow-lg border border-gray-300 rounded-xl p-6">
+<div class="max-w-6xl mx-auto mt-10 bg-white text-gray-900 shadow-lg border border-gray-300 rounded-xl p-6">
 
   <div class="flex justify-between items-center mb-6">
     <h2 class="text-2xl font-bold text-gray-800">
@@ -51,6 +51,21 @@
 
             Agregar Productos
           </a>
+
+          <!-- BOTÓN VER (AZUL) -->
+              <a href="/compras/1"
+                class="flex items-center gap-1 bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 transition">
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24" stroke-width="2" stroke="white"
+                    class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    <circle cx="12" cy="12" r="3" />
+                </svg>
+
+                Ver
+              </a>
 
           <!-- BOTÓN EDITAR (AMARILLO) -->
           <a href="/pedidos/1/editar"

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="max-w-4xl mx-auto mt-10 bg-white shadow-lg border border-gray-300 rounded-xl p-6">
+<div class="max-w-4xl mx-auto mt-10 bg-white text-gray-900 shadow-lg border border-gray-300 rounded-xl p-6">
 
   <div class="flex justify-between items-center mb-6">
     <h2 class="text-2xl font-bold text-gray-800">

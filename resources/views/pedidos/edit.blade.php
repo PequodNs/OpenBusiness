@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="max-w-lg mx-auto mt-10 bg-white shadow-lg border border-gray-300 rounded-xl p-6">
+<div class="max-w-lg mx-auto mt-10 bg-white text-gray-900 shadow-lg border border-gray-300 rounded-xl p-6">
   <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
     Editar Pedido
   </h2>
@@ -47,7 +47,8 @@
 
     <div>
       <label class="block text-gray-700 font-semibold mb-1">Observaciones</label>
-      <textarea class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400">Texto ejemplo…</textarea>
+      <textarea class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400"
+                placeholder="Notas adicionales…"></textarea>
     </div>
 
     <div class="flex justify-between mt-6">

@@ -33,20 +33,20 @@
 
         <!-- Ejemplo -->
         <tr class="border-b hover:bg-gray-50 transition">
-            <td class="p-3">OC-001</td>
-            <td class="p-3">Proveedor Ejemplo</td>
-            <td class="p-3">2025-01-10</td>
+            <td class="p-3 text-gray-800">OC-001</td>
+            <td class="p-3 text-gray-800">Proveedor Ejemplo</td>
+            <td class="p-3 text-gray-800">2025-01-10</td>
 
             <!-- Resumen -->
             <td class="p-3 text-gray-800">Laptop Asus TUF15, Monitor LG</td> <!-- Fijate en este texto no desaparece despues -->
 
             <!-- Cantidad total -->
-            <td class="p-3 font-semibold">3</td>
+            <td class="p-3 text-gray-800">3</td>
 
             <!-- Total -->
-            <td class="p-3 font-semibold">$1.800.000</td>
+            <td class="p-3 text-gray-800">$1.800.000</td>
 
-            <td class="p-3 font-semibold"> Pendiente</td>
+            <td class="p-3 text-gray-800"> Pendiente</td>
 
             <td class="p-3 flex gap-2">
 

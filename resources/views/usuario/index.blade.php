@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
-@section('title', 'Inicio')
+@section('title', 'Usuarios')
 
 @section('content')
-<div class="bg-white shadow-lg text-gray-900 rounded-2xl p-6">
+<div class="bg-white shadow-lg rounded-2xl p-6">
 
-    <!-- Encabezado: Título izquierda – Botón derecha -->
+    <!-- Encabezado -->
     <div class="mb-4 flex items-center justify-between">
-        <h2 class="text-2xl font-bold text-gray-800">Lista de Categorías</h2>
+        <h2 class="text-2xl font-bold text-gray-800">Lista de Usuarios</h2>
 
-        <a href="/categorias/crear"
+        <a href="/usuarios/crear"
            class="bg-gray-800 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition">
-            Agregar Categoría
+            Agregar Usuario
         </a>
     </div>
 
@@ -19,10 +19,11 @@
         <table class="min-w-full border border-gray-300 rounded-lg">
             <thead class="bg-gray-100 border-b-2 border-gray-300">
                 <tr>
-                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">ID</th>
                     <th class="px-4 py-2 text-left text-gray-700 font-semibold">Nombre</th>
-                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">Descripción</th>
-                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">Acciones</th>
+                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">Correo</th>
+                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">Contraseña</th>
+                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">Rol</th>
+                    <th class="px-4 py-2 text-center text-gray-700 font-semibold">Acciones</th>
                 </tr>
             </thead>
 
@@ -30,15 +31,19 @@
 
                 <!-- FILA EJEMPLO -->
                 <tr class="hover:bg-gray-50 transition-all">
-                    <td class="px-4 py-2 text-gray-800">1</td>
-                    <td class="px-4 py-2 text-gray-800">Electrónica</td>
-                    <td class="px-4 py-2 text-gray-600">Productos tecnológicos y accesorios.</td>
+                    <td class="px-4 py-2 text-gray-800">Juan Pérez</td>
+                    <td class="px-4 py-2 text-gray-800">juan@example.com</td>
+
+                    <!-- Contraseña oculta -->
+                    <td class="px-4 py-2 text-gray-800">************</td>
+
+                    <td class="px-4 py-2 text-gray-800">Usuario</td>
 
                     <!-- ACCIONES -->
                     <td class="px-4 py-2 flex gap-2 justify-center">
 
-                        <!-- BOTÓN EDITAR -->
-                        <a href="/categorias/1/editar"
+                        <!-- EDITAR -->
+                        <a href="/usuarios/1/editar"
                            class="flex items-center gap-1 bg-yellow-500 text-white px-3 py-1.5 rounded-lg hover:bg-yellow-600 transition">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                  stroke-width="2" stroke="white" class="w-5 h-5">
@@ -48,8 +53,8 @@
                             Editar
                         </a>
 
-                        <!-- BOTÓN ELIMINAR -->
-                        <a href="/categorias/1/eliminar"
+                        <!-- ELIMINAR -->
+                        <a href="/usuarios/1/eliminar"
                            class="flex items-center gap-1 bg-red-600 text-white px-3 py-1.5 rounded-lg hover:bg-red-700 transition">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                  stroke-width="2" stroke="white" class="w-5 h-5">
@@ -58,11 +63,13 @@
                             </svg>
                             Eliminar
                         </a>
+
                     </td>
                 </tr>
 
             </tbody>
         </table>
     </div>
+
 </div>
 @endsection
