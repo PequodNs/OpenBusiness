@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="es" class="light">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,29 +17,58 @@
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body id="app-body" class="font-sans antialiased">
+    <body id="app-body" 
+      class="font-sans antialiased bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))] transition-all duration-300">
 
-        @include('layouts.header')
-        
-        <!-- Contenedor principal -->
-        <div class="flex min-h-screen">
+            @include('layouts.header')
 
-            <!-- Sidebar -->
-            @include('layouts.sidebar')
+            <div class="flex min-h-screen">
 
-            <!-- Contenido -->
-            <div class="flex-1 p-6">
-                @yield('content')
+                @include('layouts.sidebar')
+
+                <div class="flex-1 p-6">
+                    @yield('content')
+                </div>
+
             </div>
 
-        </div>
+            <style>
+                :root {
+                    --color-bg: 243 244 246;
+                    --color-sidebar: 255 255 255;
+                    --color-text: 17 24 39;
 
-        <script>
-            function toggleTheme() {
-                const body = document.getElementById("app-body");
-                body.classList.toggle("dark");
-            }
-        </script>
+                    --color-hover: 182 195 214;
+                }
+
+                .dark {
+                    --color-bg: 17 24 39;
+                    --color-sidebar: 31 41 55;
+                    --color-text: 255 255 255;
+
+                    --color-hover: 182 195 214;
+                }
+            </style>
+
+            <script>
+                function toggleTheme() {
+                    const html = document.documentElement;
+
+                    if (html.classList.contains('dark')) {
+                        html.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        html.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                }
+
+                // Mantener tema al recargar
+                (() => {
+                    const theme = localStorage.getItem('theme');
+                    if (theme === 'dark') document.documentElement.classList.add('dark');
+                })();
+            </script>
 
     </body>
 </html>

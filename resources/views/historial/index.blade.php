@@ -14,7 +14,6 @@
         <table class="min-w-full border border-gray-300 rounded-lg">
             <thead class="bg-gray-100 border-b-2 border-gray-300">
                 <tr>
-                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">ID historial</th>
                     <th class="px-4 py-2 text-left text-gray-700 font-semibold">ID usuario</th>
                     <th class="px-4 py-2 text-left text-gray-700 font-semibold">ID Producto</th>
                     <th class="px-4 py-2 text-left text-gray-700 font-semibold">Accion realizada</th>
@@ -27,7 +26,6 @@
 
                 <!-- FILA EJEMPLO -->
                 <tr class="hover:bg-gray-50 transition-all">
-                    <td class="px-4 py-2 text-gray-800">1</td>
                     <td class="px-4 py-2 text-gray-800">3</td>
                     <td class="px-4 py-2 text-gray-800">2</td>
                     <td class="px-4 py-2 text-gray-800">Editar</td>

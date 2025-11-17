@@ -17,15 +17,32 @@
     </div>
 
     <div>
-      <label class="block text-gray-700 font-semibold mb-1">Fecha</label>
-      <input type="date" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400">
-    </div>
-
-    <div>
       <label class="block text-gray-700 font-semibold mb-1">Proveedor</label>
       <select class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400">
         <option>Seleccionar proveedor</option>
+        <option>Proveedor A</option>
+        <option>Proveedor B</option>
+        <option>Proveedor C</option>
       </select>
+    </div>
+
+    <div>
+      <label class="block text-gray-700 font-semibold mb-1">N° Orden de Compra</label>
+      <select class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400">
+
+        <option value="">Seleccionar orden de compra</option>
+
+        {{-- Opciones predefinidas sin backend --}}
+        <option value="1">OC-001 — Compra de Insumos</option>
+        <option value="2">OC-002 — Repuestos varios</option>
+        <option value="3">OC-003 — Material de oficina</option>
+
+      </select>
+    </div>
+
+    <div>
+      <label class="block text-gray-700 font-semibold mb-1">Fecha</label>
+      <input type="date" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400">
     </div>
 
     <div>

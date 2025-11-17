@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="max-w-4xl mx-auto mt-10 bg-white shadow-lg border border-gray-300 rounded-xl p-6">
+<div class="max-w-6xl mx-auto mt-10 bg-white shadow-lg border border-gray-300 rounded-xl p-6">
 
   <div class="flex justify-between items-center mb-6">
     <h2 class="text-2xl font-bold text-gray-800">
@@ -21,8 +21,9 @@
     <thead>
       <tr class="bg-gray-200 border-b border-gray-300">
         <th class="p-3 text-left text-gray-700 font-semibold">Código</th>
-        <th class="p-3 text-left text-gray-700 font-semibold">Fecha</th>
         <th class="p-3 text-left text-gray-700 font-semibold">Proveedor</th>
+        <th class="p-3 text-left text-gray-700 font-semibold">N° OrdenCompra </th>
+        <th class="p-3 text-left text-gray-700 font-semibold">Fecha</th>
         <th class="p-3 text-left text-gray-700 font-semibold">Acciones</th>
       </tr>
     </thead>
@@ -32,10 +33,24 @@
       <!-- FILA EJEMPLO -->
       <tr class="border-b hover:bg-gray-50 transition">
         <td class="p-3">PED-001</td>
-        <td class="p-3">2025-01-15</td>
         <td class="p-3">Proveedor Ejemplo</td>
+        <td class="p-3">2143451</td>
+        <td class="p-3">21-05-23</td>
 
         <td class="p-3 flex gap-2">
+
+          <a href="/productos/create"
+            class="flex items-center gap-1 bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 transition">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24" stroke-width="2" stroke="white"
+                class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 4v16m8-8H4" />
+            </svg>
+
+            Agregar Productos
+          </a>
 
           <!-- BOTÓN EDITAR (AMARILLO) -->
           <a href="/pedidos/1/editar"
