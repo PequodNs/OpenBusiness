@@ -9,7 +9,7 @@
     <div class="flex justify-between items-center mb-6">
         <h2 class="text-2xl font-bold text-gray-800">Listado de Compras</h2>
 
-        <a href="/compras/crear"
+        <a href="/compras/create"
            class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition font-semibold">
             + Nueva Compra
         </a>
@@ -51,7 +51,7 @@
             <td class="p-3 flex gap-2">
 
                 <!-- BOTÓN VER (AZUL) -->
-                <a href="/compras/1"
+                <a href="/compras/show"
                 class="flex items-center gap-1 bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 transition">
 
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -66,7 +66,7 @@
                 </a>
 
                 <!-- Editar -->
-                <a href="/compras/1/editar"
+                <a href="/compras/edit"
                    class="flex items-center gap-1 bg-yellow-500 text-white px-3 py-1.5 rounded-lg hover:bg-yellow-600 transition">
                     Editar
                 </a>

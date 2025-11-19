@@ -11,7 +11,7 @@
       Listado de Pedidos
     </h2>
 
-    <a href="/pedidos/crear" 
+    <a href="/pedidos/create" 
        class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition font-semibold">
       + Nuevo Pedido
     </a>
@@ -39,7 +39,7 @@
 
         <td class="p-3 flex gap-2">
 
-          <a href="/productos/create"
+          <a href="/compras/create"
             class="flex items-center gap-1 bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 transition">
             
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -53,7 +53,7 @@
           </a>
 
           <!-- BOTÓN VER (AZUL) -->
-              <a href="/compras/1"
+              <a href="/pedidos/show"
                 class="flex items-center gap-1 bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 transition">
 
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -68,7 +68,7 @@
               </a>
 
           <!-- BOTÓN EDITAR (AMARILLO) -->
-          <a href="/pedidos/1/editar"
+          <a href="/pedidos/edit"
              class="flex items-center gap-1 bg-yellow-500 text-white px-3 py-1.5 rounded-lg hover:bg-yellow-600 transition">
 
               <svg xmlns="http://www.w3.org/2000/svg" fill="none"

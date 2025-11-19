@@ -9,7 +9,7 @@
     <div class="mb-4 flex items-center justify-between">
         <h2 class="text-2xl font-bold text-gray-800">Lista de Usuarios</h2>
 
-        <a href="/usuarios/crear"
+        <a href="/usuario/create"
            class="bg-gray-800 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition">
             Agregar Usuario
         </a>
@@ -41,17 +41,6 @@
 
                     <!-- ACCIONES -->
                     <td class="px-4 py-2 flex gap-2 justify-center">
-
-                        <!-- EDITAR -->
-                        <a href="/usuarios/1/editar"
-                           class="flex items-center gap-1 bg-yellow-500 text-white px-3 py-1.5 rounded-lg hover:bg-yellow-600 transition">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                 stroke-width="2" stroke="white" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                      d="M16.862 3.487a2.25 2.25 0 113.182 3.182l-10.5 10.5a4.5 4.5 0 01-1.897 1.13l-3.087.88a.75.75 0 01-.927-.928l.88-3.086a4.5 4.5 0 011.13-1.898l10.5-10.5z"/>
-                            </svg>
-                            Editar
-                        </a>
 
                         <!-- ELIMINAR -->
                         <a href="/usuarios/1/eliminar"

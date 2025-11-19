@@ -31,15 +31,15 @@
 
     <div class="flex justify-between items-center mt-6">
 
-      <a href="/"
+      <a href="/productos"
          class="text-sm font-semibold text-gray-700 hover:underline">
         ← Volver
       </a>
 
-      <button type="submit"
+      <a href="/productos"
               class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-600 font-semibold transition">
         Ingresar
-      </button>
+      </a>
 
     </div>
 

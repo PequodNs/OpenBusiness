@@ -9,7 +9,7 @@
     <div class="mb-4 flex items-center justify-between">
         <h2 class="text-2xl font-bold text-gray-800">Lista de Productos</h2>
 
-        <a href="/productos/crear"
+        <a href="/productos/create"
            class="bg-gray-800 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition">
             Agregar Producto
         </a>
@@ -49,7 +49,7 @@
                     <td class="px-4 py-2 flex gap-2 justify-center">
 
                         <!-- BOTÓN EDITAR -->
-                        <a href="/productos/1/editar"
+                        <a href="/productos/edit"
                            class="flex items-center gap-1 bg-yellow-500 text-white px-3 py-1.5 rounded-lg hover:bg-yellow-600 transition">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                  stroke-width="2" stroke="white" class="w-5 h-5">

@@ -33,7 +33,7 @@
 
         <div class="flex justify-between pt-6">
 
-            <a href="/usuarios"
+            <a href="/usuario"
                class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-600 font-semibold transition">
                 Volver
             </a>

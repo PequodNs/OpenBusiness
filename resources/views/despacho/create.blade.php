@@ -35,7 +35,7 @@
     </div>
 
     <div class="flex justify-between mt-6">
-      <a href="/despachos"
+      <a href="/despacho"
          class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-600 font-semibold transition">
         Volver
       </a>

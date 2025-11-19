@@ -11,7 +11,7 @@
       Listado de Despachos
     </h2>
 
-    <a href="/despachos/crear" 
+    <a href="/despacho/create" 
        class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition font-semibold">
       + Nuevo Despacho
     </a>
@@ -40,7 +40,7 @@
         <td class="p-3 flex gap-2">
 
           <!-- BOTÓN EDITAR (AMARILLO) -->
-          <a href="/despachos/1/editar"
+          <a href="/despacho/edit"
              class="flex items-center gap-1 bg-yellow-500 text-white px-3 py-1.5 rounded-lg hover:bg-yellow-600 transition">
 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -54,7 +54,7 @@
           </a>
 
           <!-- BOTÓN ELIMINAR (ROJO) -->
-          <a href="/despachos/1/eliminar"
+          <a href="/despacho/1/eliminar"
              class="flex items-center gap-1 bg-red-600 text-white px-3 py-1.5 rounded-lg hover:bg-red-700 transition">
 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"

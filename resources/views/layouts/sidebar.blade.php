@@ -34,56 +34,56 @@
           Inicio
         </a>
 
-        <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
+        <a href="/productos" class="block px-4 py-2 rounded-lg transition-all duration-200
                   bg-[rgb(var(--color-sidebar))]
                   text-[rgb(var(--color-text))]
                   hover:bg-[rgb(var(--color-hover))]">
           Productos
         </a>
 
-        <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
+        <a href="/proveedores" class="block px-4 py-2 rounded-lg transition-all duration-200
                   bg-[rgb(var(--color-sidebar))]
                   text-[rgb(var(--color-text))]
                   hover:bg-[rgb(var(--color-hover))]">
           Proveedores
         </a>
 
-        <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
+        <a href="/categorias" class="block px-4 py-2 rounded-lg transition-all duration-200
                   bg-[rgb(var(--color-sidebar))]
                   text-[rgb(var(--color-text))]
                   hover:bg-[rgb(var(--color-hover))]">
           Categorías
         </a>
 
-        <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
+        <a href="/pedidos" class="block px-4 py-2 rounded-lg transition-all duration-200
                   bg-[rgb(var(--color-sidebar))]
                   text-[rgb(var(--color-text))]
                   hover:bg-[rgb(var(--color-hover))]">
           Pedidos
         </a>
 
-        <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
+        <a href="/despacho" class="block px-4 py-2 rounded-lg transition-all duration-200
                   bg-[rgb(var(--color-sidebar))]
                   text-[rgb(var(--color-text))]
                   hover:bg-[rgb(var(--color-hover))]">
           Despacho
         </a>
 
-        <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
+        <a href="/historial" class="block px-4 py-2 rounded-lg transition-all duration-200
                   bg-[rgb(var(--color-sidebar))]
                   text-[rgb(var(--color-text))]
                   hover:bg-[rgb(var(--color-hover))]">
           Historial
         </a>
 
-        <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
+        <a href="/compras" class="block px-4 py-2 rounded-lg transition-all duration-200
                   bg-[rgb(var(--color-sidebar))]
                   text-[rgb(var(--color-text))]
                   hover:bg-[rgb(var(--color-hover))]">
           Compras
         </a>
 
-        <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
+        <a href="/usuario" class="block px-4 py-2 rounded-lg transition-all duration-200
                   bg-[rgb(var(--color-sidebar))]
                   text-[rgb(var(--color-text))]
                   hover:bg-[rgb(var(--color-hover))]">
@@ -92,9 +92,9 @@
 
       </nav>
 
-      <button class="mt-auto bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg font-semibold">
+      <a href="/login" class="mt-auto bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg font-semibold block text-center">
         Salir
-      </button>
+      </a>
 
       <div class="text-center text-sm border-t border-gray-400 dark:border-gray-600 pt-3 mt-3">
         © 2025 OpenBusiness
