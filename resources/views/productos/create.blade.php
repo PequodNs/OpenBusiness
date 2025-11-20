@@ -7,55 +7,60 @@
     
     <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Crear Producto</h2>
 
-    <form class="space-y-4">
+    <form class="space-y-4" method="POST" action="{{ route('productos.store') }}" enctype="multipart/form-data">
+        @csrf
 
         <div>
             <label class="block text-gray-700 font-semibold">Nombre</label>
-            <input type="text" class="w-full border-gray-300 rounded-lg p-2 shadow-sm">
+            <input type="text" name="nombre" class="w-full border-gray-300 rounded-lg p-2 shadow-sm" required>
         </div>
 
         <div>
             <label class="block text-gray-700 font-semibold">Descripción</label>
-            <textarea class="w-full border-gray-300 rounded-lg p-2 shadow-sm"></textarea>
+            <textarea name="descripcion" class="w-full border-gray-300 rounded-lg p-2 shadow-sm"></textarea>
         </div>
 
         <div>
             <label class="block text-gray-700 font-semibold">Cantidad</label>
-            <input type="number" class="w-full border-gray-300 rounded-lg p-2 shadow-sm">
+            <input type="number" name="stock" min="0" class="w-full border-gray-300 rounded-lg p-2 shadow-sm" required>
         </div>
 
         <div>
+            <label class="block text-gray-700 font-semibold">Stock Mínimo</label>
+            <input type="number" name="stock_minimo" min="0" class="w-full border-gray-300 rounded-lg p-2 shadow-sm" required>
+        </div>
+                <div>
             <label class="block text-gray-700 font-semibold">Precio</label>
-            <input type="number" step="0.01" class="w-full border-gray-300 rounded-lg p-2 shadow-sm">
+            <input type="number" name="precio" step="0.01"
+                class="w-full border-gray-300 rounded-lg p-2 shadow-sm" required>
+        </div>
+
+
+        <div>
+            <label class="block text-gray-700 font-semibold">Distribuidor</label>
+            <select name="id_distribuidor" class="w-full border-gray-300 rounded-lg p-2 shadow-sm">
+                <option value="">Seleccionar distribuidor</option>
+                @foreach($distribuidores as $distribuidor)
+                    <option value="{{ $distribuidor->id }}">{{ $distribuidor->nombre }}</option>
+                @endforeach
+            </select>
         </div>
 
         <div>
-            <label class="block text-gray-700 font-semibold">ID Categoría</label>
-            <input type="number" class="w-full border-gray-300 rounded-lg p-2 shadow-sm">
-        </div>
-
-        <div>
-            <label class="block text-gray-700 font-semibold">ID Distribuidor</label>
-            <input type="number" class="w-full border-gray-300 rounded-lg p-2 shadow-sm">
-        </div>
-
-        <div>
-            <label class="block text-gray-700 font-semibold">Imagen</label>
-            <input type="file" class="w-full border-gray-300 rounded-lg p-2 shadow-sm">
+            <label class="block text-gray-700 font-semibold">Imágenes</label>
+            <input type="file" name="imagenes[]" multiple class="w-full border-gray-300 rounded-lg p-2 shadow-sm">
         </div>
 
         <div class="flex justify-between pt-6">
-
-            <a href="#" 
+            <a href="{{ route('productos.index') }}" 
                class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-600 font-semibold transition">
                 Volver
             </a>
 
-            <button type="button"
+            <button type="submit"
                 class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-600 font-semibold transition">
                 Guardar
             </button>
-
         </div>
 
     </form>

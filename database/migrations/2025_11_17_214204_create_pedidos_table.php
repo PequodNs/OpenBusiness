@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('fecha_pedido');
             $table->date('fecha_entrega')->nullable();
             $table->string('estado')->default('pendiente'); //los estados seran: pendiente,recibido,cancelado
-            $table->unsignedBigInteger('id_usuario'); //para ver que usuario realizo la accion
+            $table->unsignedBigInteger('id_usuario')->nullable(); //para ver que usuario realizo la accion
             $table->timestamps();
 
             $table->foreign('id_distribuidor')->references('id')->on('distribuidores')->onDelete('cascade');

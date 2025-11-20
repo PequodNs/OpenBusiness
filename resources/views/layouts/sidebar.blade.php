@@ -34,7 +34,8 @@
           Inicio
         </a>
 
-        <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
+        <a href="{{ route('productos.index') }}"
+         class="block px-4 py-2 rounded-lg transition-all duration-200
                   bg-[rgb(var(--color-sidebar))]
                   text-[rgb(var(--color-text))]
                   hover:bg-[rgb(var(--color-hover))]">
@@ -47,15 +48,7 @@
                   hover:bg-[rgb(var(--color-hover))]">
           Proveedores
         </a>
-
-        <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
-                  bg-[rgb(var(--color-sidebar))]
-                  text-[rgb(var(--color-text))]
-                  hover:bg-[rgb(var(--color-hover))]">
-          Categorías
-        </a>
-
-        <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
+        <a href="{{ route('pedidos.index') }}" class="block px-4 py-2 rounded-lg transition-all duration-200
                   bg-[rgb(var(--color-sidebar))]
                   text-[rgb(var(--color-text))]
                   hover:bg-[rgb(var(--color-hover))]">
@@ -76,12 +69,6 @@
           Historial
         </a>
 
-        <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
-                  bg-[rgb(var(--color-sidebar))]
-                  text-[rgb(var(--color-text))]
-                  hover:bg-[rgb(var(--color-hover))]">
-          Compras
-        </a>
 
         <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
                   bg-[rgb(var(--color-sidebar))]

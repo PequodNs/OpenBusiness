@@ -12,7 +12,8 @@ class Producto extends Model
         'descripcion',
         'precio',
         'stock',
-        'id_distribuidor',
+        'precio',
+        'distribuidor_id',
     ];
     
     

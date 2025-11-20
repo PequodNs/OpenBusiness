@@ -7,51 +7,93 @@
     
     <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Editar Producto</h2>
 
-    <form class="space-y-4">
+    <form class="space-y-4" 
+          method="POST" 
+          action="{{ route('productos.update', $producto->id) }}" 
+          enctype="multipart/form-data">
+
+        @csrf
+        @method('PUT')
 
         <div>
             <label class="block text-gray-700 font-semibold">Nombre</label>
-            <input type="text" value="Laptop HP" class="w-full border-gray-300 rounded-lg p-2 shadow-sm">
+            <input type="text" name="nombre"
+                value="{{ old('nombre', $producto->nombre) }}"
+                class="w-full border-gray-300 rounded-lg p-2 shadow-sm" required>
         </div>
 
         <div>
             <label class="block text-gray-700 font-semibold">Descripción</label>
-            <textarea class="w-full border-gray-300 rounded-lg p-2 shadow-sm">Notebook 15" Ryzen 5</textarea>
+            <textarea name="descripcion"
+                class="w-full border-gray-300 rounded-lg p-2 shadow-sm">{{ old('descripcion', $producto->descripcion) }}</textarea>
         </div>
 
-        <div>
-            <label class="block text-gray-700 font-semibold">Cantidad</label>
-            <input type="number" value="10" class="w-full border-gray-300 rounded-lg p-2 shadow-sm">
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <label class="block text-gray-700 font-semibold">Stock</label>
+                <input type="number" name="stock"
+                    value="{{ old('stock', $producto->stock) }}"
+                    class="w-full border-gray-300 rounded-lg p-2 shadow-sm" required>
+            </div>
+
+            <div>
+                <label class="block text-gray-700 font-semibold">Stock Mínimo</label>
+                <input type="number" name="stock_minimo"
+                    value="{{ old('stock_minimo', $producto->stock_minimo) }}"
+                    class="w-full border-gray-300 rounded-lg p-2 shadow-sm" required>
+            </div>
         </div>
 
         <div>
             <label class="block text-gray-700 font-semibold">Precio</label>
-            <input type="number" step="0.01" value="699990" class="w-full border-gray-300 rounded-lg p-2 shadow-sm">
+            <input type="number" name="precio" step="0.01"
+                value="{{ old('precio', $producto->precio) }}"
+                class="w-full border-gray-300 rounded-lg p-2 shadow-sm" required>
         </div>
 
         <div>
-            <label class="block text-gray-700 font-semibold">ID Categoría</label>
-            <input type="number" value="3" class="w-full border-gray-300 rounded-lg p-2 shadow-sm">
+            <label class="block text-gray-700 font-semibold">Distribuidor</label>
+            <select name="id_distribuidor"
+                class="w-full border-gray-300 rounded-lg p-2 shadow-sm">
+                <option value="">Seleccionar distribuidor</option>
+
+                @foreach($distribuidores as $distribuidor)
+                    <option value="{{ $distribuidor->id }}"
+                        {{ $producto->id_distribuidor == $distribuidor->id ? 'selected' : '' }}>
+                        {{ $distribuidor->nombre }}
+                    </option>
+                @endforeach
+            </select>
         </div>
 
         <div>
-            <label class="block text-gray-700 font-semibold">ID Distribuidor</label>
-            <input type="number" value="2" class="w-full border-gray-300 rounded-lg p-2 shadow-sm">
+            <label class="block text-gray-700 font-semibold">Agregar nuevas imágenes</label>
+            <input type="file" name="imagenes[]" multiple
+                class="w-full border-gray-300 rounded-lg p-2 shadow-sm">
         </div>
 
+        {{-- Mostrar imágenes actuales --}}
+        @if($producto->imagenes->count() > 0)
         <div>
-            <label class="block text-gray-700 font-semibold">Imagen</label>
-            <input type="file" class="w-full border-gray-300 rounded-lg p-2 shadow-sm">
+            <label class="block text-gray-700 font-semibold mb-1">Imágenes actuales</label>
+            <div class="grid grid-cols-3 gap-3">
+                @foreach($producto->imagenes as $img)
+                    <div class="border rounded-lg overflow-hidden">
+                        <img src="{{ asset('storage/'.$img->ruta_imagen) }}" class="w-full h-24 object-cover">
+                    </div>
+                @endforeach
+            </div>
         </div>
+        @endif
 
         <div class="flex justify-between pt-6">
 
-            <a href="#" 
+            <a href="{{ route('productos.index') }}"
                class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-600 font-semibold transition">
                 Volver
             </a>
 
-            <button type="button"
+            <button type="submit"
                 class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-600 font-semibold transition">
                 Actualizar
             </button>
