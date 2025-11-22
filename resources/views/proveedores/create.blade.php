@@ -9,42 +9,39 @@
     Añadir Proveedor
   </h2>
 
-  <form class="space-y-4">
+  <form action="{{ route('proveedores.store') }}" method="POST" class="space-y-4">
+    @csrf
 
     <div>
       <label class="block text-gray-700 font-semibold mb-1">Nombre</label>
-      <input type="text" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400">
+      <input type="text" name="nombre" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400" required>
     </div>
 
     <div>
       <label class="block text-gray-700 font-semibold mb-1">Contacto</label>
-      <input type="text" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400">
+      <input type="text" name="contacto" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400">
     </div>
 
     <div>
       <label class="block text-gray-700 font-semibold mb-1">Email</label>
-      <input type="email" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400">
+      <input type="email" name="email" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400">
     </div>
 
     <div>
       <label class="block text-gray-700 font-semibold mb-1">Dirección</label>
-      <textarea class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400"></textarea>
+      <textarea name="direccion" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400"></textarea>
     </div>
 
     <div class="flex justify-between mt-6">
-
-      <!-- Botón volver con estilo de botón -->
-      <a href="/proveedores"
+      <a href="{{ route('proveedores.index') }}"
          class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-600 font-semibold transition">
         Volver
       </a>
 
-      <!-- Botón guardar -->
-       <a href="/proveedores"
+      <button type="submit"
          class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-600 font-semibold transition">
         Guardar
-      </a>
-      
+      </button>
     </div>
 
   </form>

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,5 +21,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        //Ejemplo: decirle a Laravel que también cargue migraciones desde otra carpeta
+        $this->loadMigrationsFrom([
+        database_path('migrations'),
+        base_path('database/migrations'),
+    ]);
     }
 }

@@ -26,7 +26,7 @@
 
       <nav class="flex flex-col gap-3">
 
-        <a href="/"
+        <a href="/home"
           class="block px-4 py-2 rounded-lg transition-all duration-200
                   bg-[rgb(var(--color-sidebar))]
                   text-[rgb(var(--color-text))]
@@ -42,10 +42,11 @@
           Productos
         </a>
 
-        <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
-                  bg-[rgb(var(--color-sidebar))]
-                  text-[rgb(var(--color-text))]
-                  hover:bg-[rgb(var(--color-hover))]">
+        <a href="{{ route('proveedores.index') }}" 
+          class="block px-4 py-2 rounded-lg transition-all duration-200
+          bg-[rgb(var(--color-sidebar))]
+          text-[rgb(var(--color-text))]
+          hover:bg-[rgb(var(--color-hover))]">
           Proveedores
         </a>
         <a href="{{ route('pedidos.index') }}" class="block px-4 py-2 rounded-lg transition-all duration-200
@@ -55,10 +56,8 @@
           Pedidos
         </a>
 
-        <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
-                  bg-[rgb(var(--color-sidebar))]
-                  text-[rgb(var(--color-text))]
-                  hover:bg-[rgb(var(--color-hover))]">
+        <a href="{{ route('despacho.index') }}" class="block px-4 py-2 rounded-lg transition-all duration-200
+          bg-[rgb(var(--color-sidebar))] text-[rgb(var(--color-text))] hover:bg-[rgb(var(--color-hover))]">
           Despacho
         </a>
 

@@ -31,6 +31,56 @@ class PedidoController extends Controller
         return view('pedidos.create', compact('proveedores', 'productos'));
     }
 
+    public function edit($id)
+    {  
+        $pedido = Pedido::findOrFail($id);
+
+        // Asegurémonos de que las fechas son convertidas correctamente a Carbon
+        $pedido->fecha_pedido = \Carbon\Carbon::parse($pedido->fecha_pedido);
+        $pedido->fecha_entrega = \Carbon\Carbon::parse($pedido->fecha_entrega);
+
+        // Obtener todos los distribuidores
+        $distribuidores = Distribuidor::all();
+
+        return view('pedidos.edit', compact('pedido', 'distribuidores'));
+    }
+
+
+    
+    public function update(Request $request, $id)
+    {
+        // Validación de los datos del formulario
+        $request->validate([
+            'id_distribuidor' => 'required|exists:distribuidores,id',
+            'fecha_pedido' => 'required|date',
+            'fecha_entrega' => 'required|date',
+            'estado' => 'required|in:pendiente,en_proceso,completado,cancelado',
+            'observaciones' => 'nullable|string',
+        ]);
+
+        // Encontrar el pedido y actualizar sus datos
+        $pedido = Pedido::findOrFail($id);
+        $pedido->update([
+            'id_distribuidor' => $request->id_distribuidor,
+            'fecha_pedido' => $request->fecha_pedido,
+            'fecha_entrega' => $request->fecha_entrega,
+            'estado' => $request->estado,
+            'observaciones' => $request->observaciones,
+        ]);
+
+        // Redirigir a la vista del pedido con un mensaje de éxito
+        return redirect()->route('pedidos.index')
+            ->with('success', 'Pedido actualizado correctamente.');
+    }   
+
+    public function destroy($id)
+    {
+        $pedido = Pedido::findOrFail($id);
+        $pedido->delete();
+
+        return redirect()->route('pedidos.index')->with('success', 'Pedido eliminado correctamente.');
+    }
+
     //Guardar un nuevo pedido
         public function store(Request $request)
     {
@@ -80,7 +130,9 @@ class PedidoController extends Controller
     //Mostrar detalles de un pedido
     public function show($id)
     {
-        $pedido = Pedido::with('distribuidor', 'detalles.producto')->findOrFail($id);
+        // Cambia 'detalles' por 'detallePedidos' para que coincida con el nombre de la relación en el modelo
+        $pedido = Pedido::with('distribuidor', 'detallePedidos.producto')->findOrFail($id);
+
         return view('pedidos.show', compact('pedido'));
     }
 

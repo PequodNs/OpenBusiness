@@ -1,10 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
-Route::get('/', function () {
-    return view('usuario.create');
-});
+Route::get('/', [DashboardController::class, 'index'])->name('home');
+
+//dashboard
+Route::get('/home', [DashboardController::class, 'index'])->name('home');
+
 
 
 Route::middleware([
@@ -43,6 +46,7 @@ Route::get('/pedidos', [PedidoController::class, 'index'])->name('pedidos.index'
 Route::get('/pedidos/create', [PedidoController::class, 'create'])->name('pedidos.create');
 Route::post('/pedidos', [PedidoController::class, 'store'])->name('pedidos.store');
 Route::get('/pedidos/{id}', [PedidoController::class, 'show'])->name('pedidos.show');
+Route::get('/pedidos/{id}', [PedidoController::class, 'show'])->name('pedidos.show');
 
 Route::post('/pedidos/{id}/estado', [PedidoController::class, 'actualizarEstado'])->name('pedidos.estado');
 Route::post('/pedidos/{id}/cancelar', [PedidoController::class, 'cancelar'])->name('pedidos.cancelar');
@@ -52,6 +56,12 @@ use App\Http\Controllers\DespachoController;
 // Registrar recepción de un pedido
 Route::get('/despacho/{pedido}/create', [DespachoController::class, 'create'])->name('despacho.create');
 Route::post('/despacho/{pedido}', [DespachoController::class, 'store'])->name('despacho.store');
+Route::get('/despachos/crear', [DespachoController::class, 'create'])->name('despachos.create');
+// Ruta para listar los despachos
+Route::get('/despachos', [DespachoController::class, 'index'])->name('despachos.index');
+
+// Ruta para crear un nuevo despacho
+Route::get('/despachos/crear', [DespachoController::class, 'create'])->name('despachos.create');
 
 // Ver orden de despacho
 Route::get('/despacho/ver/{id}', [DespachoController::class, 'show'])->name('despacho.show');
@@ -63,5 +73,50 @@ Route::get('/pedidos/{id}/despacho/create', [DespachoController::class, 'create'
 Route::post('/despachos', [DespachoController::class, 'store'])
     ->name('despachos.store');
 
+// Proveedores 
+use App\Http\Controllers\ProveedorController;
+Route::resource('proveedores', ProveedorController::class);
+
+// Despachos
+Route::get('/despacho', [DespachoController::class, 'index'])->name('despacho.index');
+Route::get('/despachos/crear/{id}', [DespachoController::class, 'create'])->name('despacho.create');
+// Lista despachos
+Route::get('/despachos', [DespachoController::class, 'index'])->name('despachos.index');
+
+// Editar
+Route::get('/despachos/{id}/editar', [DespachoController::class, 'edit'])->name('despachos.edit');
+
+// Actualizar
+Route::put('/despachos/{id}', [DespachoController::class, 'update'])->name('despachos.update');
+
+// Eliminar
+Route::delete('/despachos/{id}', [DespachoController::class, 'destroy'])->name('despachos.destroy');
+
+
+// Historial
+
+use App\Http\Controllers\HistorialController;
+Route::get('/historial', [HistorialController::class, 'index'])->name('historial.index');
+
+// Pedido
+Route::get('/pedidos/{id}/editar', [PedidoController::class, 'edit'])->name('pedidos.edit');
+Route::put('/pedidos/{id}', [PedidoController::class, 'update'])->name('pedidos.update');
+Route::delete('/pedidos/{id}', [PedidoController::class, 'destroy'])->name('pedidos.destroy');
+
+
+// Ruta para listar los despachos
+Route::get('/despachos', [DespachoController::class, 'index'])->name('despachos.index');
+
+// Ruta para crear un nuevo despacho
+Route::get('/despacho/create/{id}', [DespachoController::class, 'create'])
+     ->name('despacho.create');
+
+
+// Ruta para almacenar el nuevo despacho
+Route::post('/despachos', [DespachoController::class, 'store'])->name('despachos.store');
+
+
+Route::get('/despachos/{id}', [DespachoController::class, 'show'])
+    ->name('despachos.show');
 
 

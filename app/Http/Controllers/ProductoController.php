@@ -28,7 +28,7 @@ class ProductoController extends Controller
         return view('productos.create', compact('distribuidores'));
     }
 
-    public function store(Request $request)
+       public function store(Request $request)
     {
         $request->validate([
             'nombre' => 'required',
@@ -76,7 +76,6 @@ class ProductoController extends Controller
             return redirect()->back()->with('error', 'Error: '.$e->getMessage());
         }
     }
-
         //ver detalle del producto
     public function show($id)
     {

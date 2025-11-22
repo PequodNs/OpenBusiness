@@ -1,52 +1,79 @@
 @extends('layouts.app')
 
-@section('title', 'Editar Despacho')
+@section('title', 'Editar Guía de Despacho')
 
 @section('content')
 
-<div class="max-w-lg mx-auto mt-10 bg-white text-gray-900 shadow-lg border border-gray-300 rounded-xl p-6">
-  <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
-    Editar Despacho
-  </h2>
+<div class="max-w-4xl mx-auto mt-10 bg-white text-gray-900 shadow-lg border border-gray-300 rounded-xl p-6">
 
-  <form class="space-y-4">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">
+        Editar Despacho Nº {{ $despacho->id }}
+    </h2>
 
-    <div>
-      <label class="block text-gray-700 font-semibold mb-1">Número de Despacho</label>
-      <input type="text" value="DES-001" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400">
-    </div>
+    <form method="POST" action="{{ route('despachos.update', $despacho->id) }}">
+        @csrf
+        @method('PUT')
 
-    <div>
-      <label class="block text-gray-700 font-semibold mb-1">Fecha</label>
-      <input type="date" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400">
-    </div>
+        <div class="mb-4">
+            <label class="font-semibold">Fecha de recepción</label>
+            <input type="date" name="fecha_recepcion" value="{{ $despacho->fecha_recepcion }}"
+                class="w-full border-gray-300 rounded-lg p-2">
+        </div>
 
-    <div>
-      <label class="block text-gray-700 font-semibold mb-1">Cliente / Destinatario</label>
-      <input type="text" value="Cliente ejemplo" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400">
-    </div>
+        <div class="mb-4">
+            <label class="font-semibold">Estado</label>
+            <select name="estado" class="w-full border-gray-300 rounded-lg p-2">
+                <option value="Recibido" {{ $despacho->estado === 'Recibido' ? 'selected' : '' }}>Recibido</option>
+                <option value="Completado" {{ $despacho->estado === 'Completado' ? 'selected' : '' }}>Completado</option>
+                <option value="Observado" {{ $despacho->estado === 'Observado' ? 'selected' : '' }}>Observado</option>
+            </select>
+        </div>
 
-    <div>
-      <label class="block text-gray-700 font-semibold mb-1">Estado</label>
-      <select class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400">
-        <option value="activo">Activo</option>
-        <option value="inactivo">Inactivo</option>
-      </select>
-    </div>
+        <h3 class="text-xl font-semibold mb-3">Productos recibidos</h3>
 
-    <div class="flex justify-between mt-6">
-      <a href="/despachos"
-         class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-600 font-semibold transition">
-        Volver
-      </a>
+        <table class="w-full border border-gray-300">
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="p-2 border">Producto</th>
+                    <th class="p-2 border">Cantidad recibida</th>
+                </tr>
+            </thead>
 
-      <button
-         class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-600 font-semibold transition">
-        Editar
-      </button>
-    </div>
+            <tbody>
+            @foreach($despacho->detalleDespachos as $index => $detalle)
+                <tr>
+                    <td class="p-2 border">{{ $detalle->producto->nombre }}</td>
+                    <td class="p-2 border">
+                        <input type="number" min="0"
+                               name="productos[{{ $index }}][cantidad_recibida]"
+                               value="{{ $detalle->cantidad_recibida }}"
+                               class="border-gray-300 rounded-lg p-2 w-28">
 
-  </form>
+                        <input type="hidden" 
+                               name="productos[{{ $index }}][id_detalle]"
+                               value="{{ $detalle->id }}">
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+
+        <div class="flex justify-between mt-6">
+            <a href="{{ route('despachos.index') }}"
+                class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-600">Volver</a>
+
+            <button class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-600">
+                Actualizar Despacho
+            </button>
+        </div>
+        <div class="flex justify-between mt-6">
+  
+
+</div>
+
+
+    </form>
+
 </div>
 
 @endsection

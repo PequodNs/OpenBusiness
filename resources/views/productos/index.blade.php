@@ -13,7 +13,11 @@
             Agregar Producto
         </a>
     </div>
-
+    @if(session('success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
     <!-- Tabla -->
     <div class="overflow-x-auto">
         <table class="min-w-full border border-gray-300 rounded-lg">
@@ -22,6 +26,7 @@
                     <th class="px-4 py-2 text-left text-gray-700 font-semibold">Imagen</th>
                     <th class="px-4 py-2 text-left text-gray-700 font-semibold">Nombre</th>
                     <th class="px-4 py-2 text-left text-gray-700 font-semibold">Descripción</th>
+                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">Precio</th> <!-- Nueva columna de precio -->
                     <th class="px-4 py-2 text-left text-gray-700 font-semibold">Stock</th>
                     <th class="px-4 py-2 text-left text-gray-700 font-semibold">Stock mínimo</th>
                     <th class="px-4 py-2 text-left text-gray-700 font-semibold">Proveedor</th>
@@ -46,6 +51,7 @@
 
                     <td class="px-4 py-2 text-gray-800">{{ $producto->nombre }}</td>
                     <td class="px-4 py-2 text-gray-600">{{ $producto->descripcion }}</td>
+                    <td class="px-4 py-2 text-gray-800">{{ number_format($producto->precio, 2) }}</td> <!-- Muestra el precio formateado -->
                     <td class="px-4 py-2 text-gray-800">{{ $producto->stock }}</td>
                     <td class="px-4 py-2 text-gray-800">{{ $producto->stock_minimo }}</td>
                     <td class="px-4 py-2 text-gray-800">

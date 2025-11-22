@@ -17,6 +17,13 @@
     </a>
   </div>
 
+  <!-- Mostrar mensajes de éxito si existen -->
+  @if(session('success'))
+    <div class="bg-green-500 text-white p-4 rounded-lg mb-4">
+        {{ session('success') }}
+    </div>
+  @endif
+
   <table class="w-full border-collapse">
     <thead>
       <tr class="bg-gray-200 border-b border-gray-300">
@@ -36,7 +43,7 @@
 
         <td class="p-3 flex gap-2">
 
-          <a href="{{ route('despachos.create', $pedido->id) }}"
+          <a href="{{ route('despacho.create', $pedido->id) }}"
             class="flex items-center gap-1 bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 transition">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 24 24" stroke-width="2" stroke="white"
@@ -70,8 +77,11 @@
               Editar
           </a>
 
-          <form action="{{ route('pedidos.cancelar', $pedido->id) }}" method="POST">
+          <!-- Formulario para eliminar el pedido -->
+          <form action="{{ route('pedidos.destroy', $pedido->id) }}" method="POST" 
+                onsubmit="return confirm('¿Estás seguro de que deseas eliminar este pedido?');">
             @csrf
+            @method('DELETE')
             <button type="submit"
               class="flex items-center gap-1 bg-red-600 text-white px-3 py-1.5 rounded-lg hover:bg-red-700 transition">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none"
