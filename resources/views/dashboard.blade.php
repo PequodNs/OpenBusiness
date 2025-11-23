@@ -6,7 +6,7 @@
 
 <div class="max-w-7xl mx-auto mt-10 px-4 text-gray-900">
 
-    <h1 class="text-3xl font-bold mb-6 text-gray-800">Panel de Control</h1>
+    <h1 class="text-3xl font-bold mb-6 text-[rgb(var(--color-text))]">Panel de Control</h1>
 
     {{-- ======= CARDS DE RESUMEN ======= --}}
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">

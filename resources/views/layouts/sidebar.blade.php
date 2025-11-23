@@ -61,7 +61,7 @@
           Despacho
         </a>
 
-        <a href="/" class="block px-4 py-2 rounded-lg transition-all duration-200
+        <a href="{{ route('historial.index') }}" class="block px-4 py-2 rounded-lg transition-all duration-200
                   bg-[rgb(var(--color-sidebar))]
                   text-[rgb(var(--color-text))]
                   hover:bg-[rgb(var(--color-hover))]">
@@ -78,9 +78,15 @@
 
       </nav>
 
-      <button class="mt-auto bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg font-semibold">
-        Salir
-      </button>
+      <form method="POST" action="{{ route('logout') }}" class="mt-auto">
+          @csrf
+          <button type="submit"
+              class="w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg font-semibold">
+              Salir
+          </button>
+      </form>
+
+      <a href="/register" class="text-sm text-blue-500 hover:underline mt-2">Ir a Register</a>
 
       <div class="text-center text-sm border-t border-gray-400 dark:border-gray-600 pt-3 mt-3">
         © 2025 OpenBusiness

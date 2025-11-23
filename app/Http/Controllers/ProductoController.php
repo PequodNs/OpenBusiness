@@ -135,7 +135,7 @@ class ProductoController extends Controller
             Historial::create([
                 'id_usuario' => Auth::id(),
                 'accion' => 'Editar Producto',
-                'detalle' => "Se editó el producto {$producto->nombre} (ID {$producto->id})"
+                'detalles' => "Se editó el producto {$producto->nombre} (ID {$producto->id})"
             ]);
 
             DB::commit();
@@ -164,7 +164,7 @@ class ProductoController extends Controller
         Historial::create([
             'id_usuario' => Auth::id(),
             'accion' => 'Eliminar Producto',
-            'detalle' => "Se eliminó el producto {$producto->nombre} (ID {$producto->id})"
+            'detalles' => "Se eliminó el producto {$producto->nombre} (ID {$producto->id})"
         ]);
 
         $producto->delete();

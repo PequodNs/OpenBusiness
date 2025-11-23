@@ -2,11 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HistorialController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('home');
 
 //dashboard
 Route::get('/home', [DashboardController::class, 'index'])->name('home');
+
+Route::get('/', function () {
+    return redirect('/register');
+});
 
 
 
@@ -15,9 +20,8 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/historial', [HistorialController::class, 'index'])->name('historial.index');
 });
 
 //Distruibuidor routes
@@ -36,7 +40,7 @@ Route::get('/documentos/{id}/descargar', [DocumentoController::class, 'download'
 Route::delete('/documentos/{id}', [DocumentoController::class, 'destroy'])->name('documentos.destroy');
 
 //historial
-Route::get('/historial', [HistorialController::class, 'index'])->name('historial.index');
+//Route::get('/historial', [HistorialController::class, 'index'])->name('historial.index');
 
 
 // Pedido Routes
@@ -91,12 +95,6 @@ Route::put('/despachos/{id}', [DespachoController::class, 'update'])->name('desp
 
 // Eliminar
 Route::delete('/despachos/{id}', [DespachoController::class, 'destroy'])->name('despachos.destroy');
-
-
-// Historial
-
-use App\Http\Controllers\HistorialController;
-Route::get('/historial', [HistorialController::class, 'index'])->name('historial.index');
 
 // Pedido
 Route::get('/pedidos/{id}/editar', [PedidoController::class, 'edit'])->name('pedidos.edit');
