@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+
+class UserController extends Controller
+{
+    public function index()
+    {
+        // Obtener todos los usuarios
+        $usuarios = User::all();
+
+        return view('usuarios.index', compact('usuarios'));
+    }
+}

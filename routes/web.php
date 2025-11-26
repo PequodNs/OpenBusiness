@@ -28,6 +28,8 @@ Route::middleware([
 use App\Http\Controllers\DistribuidorController;
 Route::resource('distribuidores', DistribuidorController::class);
 
+use App\Http\Controllers\UserController;
+Route::get('/usuario', [UserController::class, 'index'])->name('usuario.index');
 
 //producto routes
 use App\Http\Controllers\ProductoController;
