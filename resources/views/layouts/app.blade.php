@@ -20,6 +20,14 @@
     <body id="app-body" 
       class="font-sans antialiased bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))] transition-all duration-300">
 
+
+      @if(session('error'))
+<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mt-4 max-w-3xl mx-auto">
+    <strong>Error:</strong> {{ session('error') }}
+</div>
+@endif
+
+
             @include('layouts.header')
 
             <div class="flex min-h-screen">

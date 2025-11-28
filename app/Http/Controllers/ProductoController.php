@@ -154,6 +154,18 @@ class ProductoController extends Controller
     {
         $producto = Producto::findOrFail($id);
 
+
+        //¿el producto tiene pedidos en pendiente?
+        $tienepedidosPendiente = $producto->detallePedidos()
+        ->whereHas('pedido', function ($query) {
+            $query->where('estado', 'pendiente');
+        })->exists();
+
+        if ($tienepedidosPendiente) {
+            return redirect()->route('productos.index')
+                ->with('error', 'No se puede eliminar el producto porque tiene pedidos pendientes.');
+        }
+
         // Eliminar imágenes asociadas
         foreach ($producto->imagenes as $img) {
             Storage::disk('public')->delete($img->ruta_imagen);

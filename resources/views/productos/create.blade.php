@@ -6,6 +6,14 @@
 <div class="bg-white shadow-lg text-gray-900 rounded-2xl p-6 max-w-3xl mx-auto mt-10">
     
     <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Crear Producto</h2>
+    <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 mb-4 rounded">
+    <p class="font-semibold">Aviso importante</p>
+    <p class="text-sm">
+        Usa este formulario para solo para crear productos nuevos en el sistema y <strong>tu stock actual.</strong>  Los productos creados aquí estarán disponibles para ser seleccionados en las  
+        <strong>Órdenes de Compra</strong>, si deseas añadir productos prefiere hacerlo por pedidos para evitar <strong>errores en los datos.</strong>
+    </p>
+        </div>
+
 
     <form class="space-y-4" method="POST" action="{{ route('productos.store') }}" enctype="multipart/form-data">
         @csrf

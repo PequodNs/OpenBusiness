@@ -6,6 +6,14 @@
 <div class="bg-white text-gray-900 shadow-lg rounded-2xl p-6 max-w-3xl mx-auto mt-10">
     
     <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Editar Producto</h2>
+    <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 mb-4 rounded">
+    <p class="font-semibold">Aviso importante</p>
+    <p class="text-sm">
+        Usa este formulario para solo para editar productos en el sistema (nombre, imagenes etc) y <strong>tu stock actual.</strong>  </strong>, si deseas añadir productos prefiere hacerlo por pedidos para evitar <strong>errores en los datos.</strong>
+    </p>
+        </div>
+    
+    
 
     <form class="space-y-4" 
           method="POST" 
