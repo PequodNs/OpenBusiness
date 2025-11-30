@@ -45,6 +45,11 @@ Route::delete('/documentos/{id}', [DocumentoController::class, 'destroy'])->name
 //Route::get('/historial', [HistorialController::class, 'index'])->name('historial.index');
 
 
+Route::get('/accesibilidad', function () {
+    return view('accesibilidad.index');
+})->name('accesibilidad');
+
+
 // Pedido Routes
 use App\Http\Controllers\PedidoController;
 Route::resource('pedidos', PedidoController::class);

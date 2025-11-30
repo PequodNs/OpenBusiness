@@ -1,65 +1,85 @@
 @extends('layouts.app')
 
-@section('title', 'Inicio')
+@section('title', 'Proveedores')
 
 @section('content')
-<div class="bg-white shadow-lg rounded-2xl p-6">
+<div class="max-w-6xl mx-auto mt-10
+            shadow-lg rounded-xl p-6
+            bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))]
+            border border-[rgb(var(--color-hover))]">
 
     <!-- Encabezado -->
     <div class="mb-4 flex items-center justify-between">
-        <h2 class="text-2xl font-bold text-gray-800">Lista de Proveedores</h2>
+        <h2 class="text-2xl font-bold text-[rgb(var(--color-text))]">Lista de Proveedores</h2>
 
         <a href="{{ route('proveedores.create') }}"
-           class="bg-gray-800 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition">
+           class="px-4 py-2 rounded-lg shadow 
+                    bg-[rgb(var(--color-hover))] 
+                    text-[rgb(var(--color-text))] 
+                    hover:opacity-80 transition">
             Agregar Proveedor
         </a>
     </div>
 
-    <div class="overflow-x-auto">
-        <table class="min-w-full border border-gray-300 rounded-lg">
-            <thead class="bg-gray-100 border-b-2 border-gray-300">
-                <tr>
-                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">ID Proveedor</th>
-                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">Nombre</th>
-                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">Contacto</th>
-                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">Email</th>
-                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">Dirección</th>
-                    <th class="px-4 py-2 text-center text-gray-700 font-semibold">Acciones</th>
-                </tr>
-            </thead>
+    <!-- Tabla estilo pedidos -->
+    <table class="w-full border-collapse">
+        <thead>
+            <tr class="border-b border-[rgb(var(--color-hover))]
+                       bg-[rgb(var(--color-hover))]/20">
+                <th class="p-3 text-left font-semibold">ID Proveedor</th>
+                <th class="p-3 text-left font-semibold">Nombre</th>
+                <th class="p-3 text-left font-semibold">Contacto</th>
+                <th class="p-3 text-left font-semibold">Email</th>
+                <th class="p-3 text-left font-semibold">Dirección</th>
+                <th class="p-3 text-left font-semibold">Acciones</th>
+            </tr>
+        </thead>
 
-            <tbody class="divide-y divide-gray-200">
-                @forelse($proveedores as $proveedor)
-                <tr class="hover:bg-gray-50 transition-all">
-                    <td class="px-4 py-2 text-gray-800">{{ $proveedor->id }}</td>
-                    <td class="px-4 py-2 text-gray-800">{{ $proveedor->nombre }}</td>
-                    <td class="px-4 py-2 text-gray-800">{{ $proveedor->contacto }}</td>
-                    <td class="px-4 py-2 text-gray-800">{{ $proveedor->email }}</td>
-                    <td class="px-4 py-2 text-gray-800">{{ $proveedor->direccion }}</td>
+        <tbody>
+            @forelse($proveedores as $proveedor)
+            <tr class="border-b border-[rgb(var(--color-hover))]
+                       hover:bg-[rgb(var(--color-hover))]/10 transition">
 
-                    <td class="px-4 py-2 flex gap-2 justify-center">
-                        <a href="{{ route('proveedores.edit', $proveedor->id) }}"
-                           class="flex items-center gap-1 bg-yellow-500 text-white px-3 py-1.5 rounded-lg hover:bg-yellow-600 transition">
-                            ✏️ Editar
-                        </a>
+                <td class="p-3">{{ $proveedor->id }}</td>
+                <td class="p-3">{{ $proveedor->nombre }}</td>
+                <td class="p-3">{{ $proveedor->contacto }}</td>
+                <td class="p-3">{{ $proveedor->email }}</td>
+                <td class="p-3">{{ $proveedor->direccion }}</td>
 
-                        <form action="{{ route('proveedores.destroy', $proveedor->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                class="flex items-center gap-1 bg-red-600 text-white px-3 py-1.5 rounded-lg hover:bg-red-700 transition">
-                                🗑️ Eliminar
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="6" class="text-center py-4 text-gray-500">No hay proveedores registrados.</td>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
-    </div>
+                <td class="p-3 flex gap-2">
+                    <!-- Editar -->
+                    <a href="{{ route('proveedores.edit', $proveedor->id) }}"
+                       class="flex items-center gap-1 
+                              px-3 py-1.5 rounded-lg 
+                              bg-[rgb(var(--color-hover))] 
+                              text-[rgb(var(--color-text))] 
+                              hover:opacity-80 transition">
+                        ✏️ Editar
+                    </a>
+
+                    <!-- Eliminar -->
+                    <form action="{{ route('proveedores.destroy', $proveedor->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                                class="flex items-center gap-1 px-3 py-1.5 rounded-lg transition
+                                       bg-red-600 text-white hover:bg-red-700">
+                            🗑️ Eliminar
+                        </button>
+                    </form>
+                </td>
+
+            </tr>
+            @empty
+            <tr>
+                <td colspan="6" class="text-center p-4 text-gray-500">
+                    No hay proveedores registrados.
+                </td>
+            </tr>
+            @endforelse
+        </tbody>
+    </table>
+
 </div>
 @endsection
+

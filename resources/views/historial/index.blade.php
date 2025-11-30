@@ -3,60 +3,66 @@
 @section('title', 'Historial')
 
 @section('content')
-<div class="bg-white text-gray-900 shadow-lg rounded-2xl p-6">
+
+<div class="shadow-lg rounded-2xl p-6
+            bg-[rgb(var(--color-bg))]
+            text-[rgb(var(--color-text))]
+            border border-[rgb(var(--color-hover))]">
 
     <div class="mb-4 flex items-center justify-between">
-        <h2 class="text-2xl font-bold text-gray-800">Historial de acciones</h2>
+        <h2 class="text-2xl font-bold text-[rgb(var(--color-text))]">
+            Historial de acciones
+        </h2>
     </div>
 
-    <div class="overflow-x-auto">
-        <table class="min-w-full border border-gray-300 rounded-lg">
-            <thead class="bg-gray-100 border-b-2 border-gray-300">
-                <tr>
-                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">Usuario</th>
-                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">Acción</th>
-                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">Detalles</th>
-                    <th class="px-4 py-2 text-left text-gray-700 font-semibold">Fecha</th>
-                </tr>
-            </thead>
+    <!-- Tabla estilo igual a la de PEDIDOS -->
+    <table class="w-full border-collapse">
+        <thead>
+            <tr class="border-b border-[rgb(var(--color-hover))]
+                       bg-[rgb(var(--color-hover))]/20">
+                <th class="p-3 text-left font-semibold">Usuario</th>
+                <th class="p-3 text-left font-semibold">Acción</th>
+                <th class="p-3 text-left font-semibold">Detalles</th>
+                <th class="p-3 text-left font-semibold">Fecha</th>
+            </tr>
+        </thead>
 
-            <tbody class="divide-y divide-gray-200">
+        <tbody>
+            @forelse ($historial as $item)
+            <tr class="border-b border-[rgb(var(--color-hover))]
+                       hover:bg-[rgb(var(--color-hover))]/10 transition">
 
-                @forelse ($historial as $item)
-                    <tr class="hover:bg-gray-50 transition-all">
+                <!-- Usuario -->
+                <td class="p-3">
+                    {{ $item->usuario->name ?? 'Usuario eliminado' }}
+                </td>
 
-                        <!-- Usuario -->
-                        <td class="px-4 py-2 text-gray-800">
-                            {{ $item->usuario->name ?? 'Usuario eliminado' }}
-                        </td>
+                <!-- Acción -->
+                <td class="p-3">
+                    {{ $item->accion }}
+                </td>
 
-                        <!-- Acción -->
-                        <td class="px-4 py-2 text-gray-800">
-                            {{ $item->accion }}
-                        </td>
+                <!-- Detalles -->
+                <td class="p-3">
+                    {{ $item->detalles }}
+                </td>
 
-                        <!-- Detalles -->
-                        <td class="px-4 py-2 text-gray-800">
-                            {{ $item->detalles }}
-                        </td>
+                <!-- Fecha -->
+                <td class="p-3">
+                    {{ $item->created_at->format('d-m-Y H:i') }}
+                </td>
 
-                        <!-- Fecha -->
-                        <td class="px-4 py-2 text-gray-800">
-                            {{ $item->created_at->format('d-m-Y H:i') }}
-                        </td>
-
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="4" class="px-4 py-4 text-center text-gray-500">
-                            No hay acciones registradas.
-                        </td>
-                    </tr>
-                @endforelse
-
-            </tbody>
-        </table>
-    </div>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="4" class="p-5 text-center opacity-70">
+                    No hay acciones registradas.
+                </td>
+            </tr>
+            @endforelse
+        </tbody>
+    </table>
 
 </div>
+
 @endsection

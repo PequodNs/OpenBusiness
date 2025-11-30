@@ -4,47 +4,63 @@
 
 @section('content')
 
-<div class="max-w-6xl mx-auto mt-10 bg-white text-gray-900 shadow-lg border border-gray-300 rounded-xl p-6">
+<div class="max-w-6xl mx-auto mt-10
+            shadow-lg rounded-xl p-6
+            bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))]
+            border border-[rgb(var(--color-hover))]">
 
   <div class="flex justify-between items-center mb-6">
-    <h2 class="text-2xl font-bold text-gray-800">
+    <h2 class="text-2xl font-bold">
       Listado de Pedidos
     </h2>
 
-    <a href="{{ route('pedidos.create') }}" 
-       class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition font-semibold">
+    <a href="{{ route('pedidos.create') }}"
+       class="px-4 py-2 rounded-lg shadow 
+                    bg-[rgb(var(--color-hover))] 
+                    text-[rgb(var(--color-text))] 
+                    hover:opacity-80 transition">
       + Nuevo Pedido
     </a>
   </div>
 
-  <!-- Mostrar mensajes de éxito si existen -->
+  {{-- Mensajes de éxito --}}
   @if(session('success'))
-    <div class="bg-green-500 text-white p-4 rounded-lg mb-4">
-        {{ session('success') }}
+    <div class="p-4 rounded-lg mb-4
+                bg-green-600 text-white">
+      {{ session('success') }}
     </div>
   @endif
 
   <table class="w-full border-collapse">
     <thead>
-      <tr class="bg-gray-200 border-b border-gray-300">
-        <th class="p-3 text-left text-gray-700 font-semibold">Proveedor</th>
-        <th class="p-3 text-left text-gray-700 font-semibold">Fecha Pedido</th>
-        <th class="p-3 text-left text-gray-700 font-semibold">Estado</th>
-        <th class="p-3 text-left text-gray-700 font-semibold">Acciones</th>
+      <tr class="border-b border-[rgb(var(--color-hover))]
+                 bg-[rgb(var(--color-hover))]/20">
+        <th class="p-3 text-left font-semibold">Proveedor</th>
+        <th class="p-3 text-left font-semibold">Fecha Pedido</th>
+        <th class="p-3 text-left font-semibold">Estado</th>
+        <th class="p-3 text-left font-semibold">Acciones</th>
       </tr>
     </thead>
 
     <tbody>
       @foreach($pedidos as $pedido)
-      <tr class="border-b hover:bg-gray-50 transition">
+      <tr class="border-b border-[rgb(var(--color-hover))]
+                 hover:bg-[rgb(var(--color-hover))]/10 transition">
         <td class="p-3">{{ $pedido->distribuidor->nombre ?? 'Sin proveedor' }}</td>
+
         <td class="p-3">{{ \Carbon\Carbon::parse($pedido->fecha_pedido)->format('d-m-Y') }}</td>
+
         <td class="p-3">{{ ucfirst($pedido->estado) }}</td>
 
         <td class="p-3 flex gap-2">
 
+          {{-- Agregar Productos --}}
           <a href="{{ route('despacho.create', $pedido->id) }}"
-            class="flex items-center gap-1 bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 transition">
+            class="flex items-center gap-1 
+                                px-3 py-1.5 rounded-lg 
+                                bg-[rgb(var(--color-hover))] 
+                                text-[rgb(var(--color-text))] 
+                                hover:opacity-80 transition">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 24 24" stroke-width="2" stroke="white"
                 class="w-5 h-5">
@@ -54,8 +70,13 @@
             Agregar Productos
           </a>
 
+          {{-- Ver --}}
           <a href="{{ route('pedidos.show', $pedido->id) }}"
-            class="flex items-center gap-1 bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 transition">
+            class="flex items-center gap-1 
+                                px-3 py-1.5 rounded-lg 
+                                bg-[rgb(var(--color-hover))] 
+                                text-[rgb(var(--color-text))] 
+                                hover:opacity-80 transition">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 24 24" stroke-width="2" stroke="white"
                 class="w-5 h-5">
@@ -66,8 +87,13 @@
             Ver
           </a>
 
+          {{-- Editar --}}
           <a href="{{ route('pedidos.edit', $pedido->id) }}"
-             class="flex items-center gap-1 bg-yellow-500 text-white px-3 py-1.5 rounded-lg hover:bg-yellow-600 transition">
+             class="flex items-center gap-1 
+                                px-3 py-1.5 rounded-lg 
+                                bg-[rgb(var(--color-hover))] 
+                                text-[rgb(var(--color-text))] 
+                                hover:opacity-80 transition">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                    viewBox="0 0 24 24" stroke-width="2" stroke="white"
                    class="w-5 h-5">
@@ -77,13 +103,15 @@
               Editar
           </a>
 
-          <!-- Formulario para eliminar el pedido -->
-          <form action="{{ route('pedidos.destroy', $pedido->id) }}" method="POST" 
+          {{-- Eliminar --}}
+          <form action="{{ route('pedidos.destroy', $pedido->id) }}" method="POST"
                 onsubmit="return confirm('¿Estás seguro de que deseas eliminar este pedido?');">
             @csrf
             @method('DELETE')
+
             <button type="submit"
-              class="flex items-center gap-1 bg-red-600 text-white px-3 py-1.5 rounded-lg hover:bg-red-700 transition">
+              class="flex items-center gap-1 px-3 py-1.5 rounded-lg transition
+                     bg-red-600 text-white hover:bg-red-700">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                    viewBox="0 0 24 24" stroke-width="2" stroke="white"
                    class="w-5 h-5">

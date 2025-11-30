@@ -32,49 +32,134 @@
 
             <div class="flex min-h-screen">
 
-                @include('layouts.sidebar')
+                <div class="shrink-0">
+                    @include('layouts.sidebar')
+                </div>
 
-                <div class="flex-1 p-6">
-                    @yield('content')
+                <div class="flex-1 flex justify-center">
+                    <div class="p-6 w-full max-w-5xl">
+                        @yield('content')
+                    </div>
                 </div>
 
             </div>
 
             <style>
                 :root {
+                    --font-size: 16px;
+
                     --color-bg: 243 244 246;
                     --color-sidebar: 255 255 255;
+                    --color-header: 255 255 255;
+
                     --color-text: 17 24 39;
+
+                    --color-button-bg: 182 195 214;
+                    --color-button-text: 17 24 39;
 
                     --color-hover: 182 195 214;
                 }
 
-                .dark {
-                    --color-bg: 17 24 39;
-                    --color-sidebar: 31 41 55;
-                    --color-text: 255 255 255;
+                /* ====== Tamaños de fuente ====== */
+                [data-font="small"]  { --font-size: 14px; }
+                [data-font="medium"] { --font-size: 16px; }
+                [data-font="large"]  { --font-size: 20px; }
+
+                body {
+                    font-size: var(--font-size);
+                }
+
+                /* ====== TEMAS ====== */
+
+                /* Claro */
+                [data-theme="light"] {
+                    --color-bg: 243 244 246;
+                    --color-sidebar: 255 255 255;
+                    --color-header: 255 255 255;
+
+                    --color-text: 17 24 39;
+
+                    --color-button-bg: 182 195 214;
+                    --color-button-text: 17 24 39;
 
                     --color-hover: 182 195 214;
+                }
+
+                /* Oscuro */
+                [data-theme="dark"] {
+                    --color-bg: 17 24 39;
+                    --color-sidebar: 31 41 55;
+                    --color-header: 31 41 55;
+
+                    --color-text: 255 255 255;
+
+                    --color-button-bg: 120 130 150;
+                    --color-button-text: 255 255 255;
+
+                    --color-hover: 100 110 130;
+                }
+
+                /* Protanopia */
+                [data-theme="protanopia"] {
+                    --color-bg: 245 245 245;
+                    --color-sidebar: 230 230 230;
+                    --color-header: 230 230 230;
+
+                    --color-text: 20 20 20;
+
+                    --color-button-bg: 50 150 255;
+                    --color-button-text: 255 255 255;
+
+                    --color-hover: 30 130 230;
+                }
+
+                /* Deuteranopia */
+                [data-theme="deuteranopia"] {
+                    --color-bg: 245 245 245;
+                    --color-sidebar: 230 230 230;
+                    --color-header: 230 230 230;
+
+                    --color-text: 20 20 20;
+
+                    --color-button-bg: 255 180 50;
+                    --color-button-text: 0 0 0;
+
+                    --color-hover: 230 160 40;
+                }
+
+                /* Tritanopia */
+                [data-theme="tritanopia"] {
+                    --color-bg: 250 250 240;
+                    --color-sidebar: 240 240 220;
+                    --color-header: 240 240 220;
+
+                    --color-text: 0 0 0;
+
+                    --color-button-bg: 200 70 70;
+                    --color-button-text: 255 255 255;
+
+                    --color-hover: 170 50 50;
                 }
             </style>
 
             <script>
                 function toggleTheme() {
                     const html = document.documentElement;
+                    const current = html.getAttribute("data-theme");
 
-                    if (html.classList.contains('dark')) {
-                        html.classList.remove('dark');
-                        localStorage.setItem('theme', 'light');
-                    } else {
-                        html.classList.add('dark');
-                        localStorage.setItem('theme', 'dark');
-                    }
+                    const next = current === "dark" ? "light" : "dark";
+
+                    html.setAttribute("data-theme", next);
+                    localStorage.setItem("theme", next);
                 }
 
-                // Mantener tema al recargar
+                // Cargar preferencias guardadas
                 (() => {
-                    const theme = localStorage.getItem('theme');
-                    if (theme === 'dark') document.documentElement.classList.add('dark');
+                    const theme = localStorage.getItem("theme") || "light";
+                    const font  = localStorage.getItem("fontSize") || "medium";
+
+                    document.documentElement.setAttribute("data-theme", theme);
+                    document.documentElement.setAttribute("data-font", font);
                 })();
             </script>
 

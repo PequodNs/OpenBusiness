@@ -4,8 +4,8 @@
 
 @section('content')
 
-<div class="max-w-4xl mx-auto mt-10 bg-white text-gray-900 shadow-lg border border-gray-300 rounded-xl p-6">
-  <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+<div class="max-w-4xl mx-auto mt-10 bg-[rgb(var(--color-card))] text-[rgb(var(--color-text))] shadow-lg border border-[rgb(var(--color-border))] rounded-xl p-6">
+  <h2 class="text-2xl font-bold mb-6 text-center">
     Crear Pedido
   </h2>
 
@@ -25,9 +25,9 @@
 
     {{-- DISTRIBUIDOR --}}
     <div>
-      <label class="block text-gray-700 font-semibold mb-1">Proveedor</label>
+      <label class="block font-semibold mb-1 text-[rgb(var(--color-text))]">Proveedor</label>
       <select name="id_distribuidor"
-              class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-gray-400">
+              class="w-full border border-[rgb(var(--color-border))] rounded-lg p-2 bg-[rgb(var(--color-card))] text-[rgb(var(--color-text))] focus:ring-2 focus:ring-[rgb(var(--color-hover))]">
         <option value="">Seleccionar proveedor</option>
 
         @foreach($proveedores as $prov)
@@ -38,23 +38,22 @@
 
     {{-- FECHA DEL PEDIDO --}}
     <div>
-      <label class="block text-gray-700 font-semibold mb-1">Fecha del Pedido</label>
+      <label class="block font-semibold mb-1 text-[rgb(var(--color-text))]">Fecha del Pedido</label>
       <input type="date" name="fecha_pedido"
-             class="w-full border border-gray-300 rounded-lg p-2">
+             class="w-full border border-[rgb(var(--color-border))] bg-[rgb(var(--color-card))] text-[rgb(var(--color-text))] rounded-lg p-2 focus:ring-2 focus:ring-[rgb(var(--color-hover))]">
     </div>
-
 
     {{-- PRODUCTOS DINÁMICOS --}}
     <div class="mt-6">
-      <h3 class="text-xl font-bold text-gray-800 mb-3">Productos</h3>
+      <h3 class="text-xl font-bold mb-3">Productos</h3>
 
       <div id="productos-container" class="space-y-4">
         <div class="flex gap-4 items-end">
-          
+
           {{-- Producto --}}
           <div class="flex-1">
-            <label class="block text-gray-700 font-semibold mb-1">Producto</label>
-            <select name="productos[0][id_producto]" class="w-full border-gray-300 rounded-lg p-2">
+            <label class="block font-semibold mb-1">Producto</label>
+            <select name="productos[0][id_producto]" class="w-full border border-[rgb(var(--color-border))] bg-[rgb(var(--color-card))] text-[rgb(var(--color-text))] rounded-lg p-2">
               <option value="">Seleccionar producto</option>
               @foreach($productos as $prod)
                 <option value="{{ $prod->id }}">{{ $prod->nombre }}</option>
@@ -64,34 +63,38 @@
 
           {{-- Cantidad --}}
           <div class="w-32">
-            <label class="block text-gray-700 font-semibold mb-1">Cantidad</label>
+            <label class="block font-semibold mb-1">Cantidad</label>
             <input type="number" name="productos[0][cantidad]" min="1"
-                   class="w-full border-gray-300 rounded-lg p-2">
+                   class="w-full border border-[rgb(var(--color-border))] bg-[rgb(var(--color-card))] text-[rgb(var(--color-text))] rounded-lg p-2">
           </div>
 
           {{-- Precio unitario --}}
           <div class="w-40">
-            <label class="block text-gray-700 font-semibold mb-1">Precio Unitario</label>
+            <label class="block font-semibold mb-1">Precio Unitario</label>
             <input type="number" name="productos[0][precio_unitario]" min="0" step="0.01"
-                   class="w-full border-gray-300 rounded-lg p-2">
+                   class="w-full border border-[rgb(var(--color-border))] bg-[rgb(var(--color-card))] text-[rgb(var(--color-text))] rounded-lg p-2">
           </div>
+
         </div>
       </div>
 
       <button type="button" id="add-product-btn"
-        class="mt-3 bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-600">
+        class="mt-3 px-4 py-2 rounded-lg shadow 
+                    bg-[rgb(var(--color-hover))] 
+                    text-[rgb(var(--color-text))] 
+                    hover:opacity-80 transition">
         + Agregar Producto
       </button>
     </div>
 
     {{-- DOCUMENTOS --}}
     <div class="mt-6">
-      <h3 class="text-xl font-bold text-gray-800 mb-3">Documento (opcional)</h3>
+      <h3 class="text-xl font-bold mb-3">Documento (opcional)</h3>
 
       <div>
-        <label class="block text-gray-700 font-semibold mb-1">Tipo de Documento</label>
+        <label class="block font-semibold mb-1">Tipo de Documento</label>
         <select name="tipo_documento"
-                class="w-full border-gray-300 rounded-lg p-2">
+                class="w-full border border-[rgb(var(--color-border))] rounded-lg bg-[rgb(var(--color-card))] text-[rgb(var(--color-text))] p-2">
           <option value="">Seleccionar tipo de documento</option>
           <option value="orden_compra">Orden de Compra</option>
           <option value="nota">Nota</option>
@@ -100,21 +103,27 @@
       </div>
 
       <div class="mt-3">
-        <label class="block text-gray-700 font-semibold mb-1">Archivo</label>
+        <label class="block font-semibold mb-1">Archivo</label>
         <input type="file" name="archivo"
-               class="w-full border-gray-300 rounded-lg p-2">
+               class="w-full border border-[rgb(var(--color-border))] bg-[rgb(var(--color-card))] text-[rgb(var(--color-text))] rounded-lg p-2">
       </div>
     </div>
 
     {{-- BOTONES --}}
     <div class="flex justify-between mt-8">
       <a href="{{ route('pedidos.index') }}"
-         class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-600">
+         class="px-4 py-2 rounded-lg shadow 
+                    bg-[rgb(var(--color-hover))] 
+                    text-[rgb(var(--color-text))] 
+                    hover:opacity-80 transition">
         Volver
       </a>
 
       <button type="submit"
-              class="bg-gray-800 text-white px-5 py-2 rounded-lg hover:bg-gray-600">
+              class="px-4 py-2 rounded-lg shadow 
+                    bg-[rgb(var(--color-hover))] 
+                    text-[rgb(var(--color-text))] 
+                    hover:opacity-80 transition">
         Guardar Pedido
       </button>
     </div>
@@ -132,7 +141,8 @@ document.getElementById('add-product-btn').addEventListener('click', function ()
     <div class="flex gap-4 items-end mt-4">
 
       <div class="flex-1">
-        <select name="productos[${index}][id_producto]" class="w-full border-gray-300 rounded-lg p-2">
+        <select name="productos[${index}][id_producto]"
+                class="w-full border border-[rgb(var(--color-border))] bg-[rgb(var(--color-card))] text-[rgb(var(--color-text))] rounded-lg p-2">
           <option value="">Seleccionar producto</option>
           @foreach($productos as $prod)
             <option value="{{ $prod->id }}">{{ $prod->nombre }}</option>
@@ -142,12 +152,12 @@ document.getElementById('add-product-btn').addEventListener('click', function ()
 
       <div class="w-32">
         <input type="number" name="productos[${index}][cantidad]" min="1"
-               class="w-full border-gray-300 rounded-lg p-2">
+               class="w-full border border-[rgb(var(--color-border))] bg-[rgb(var(--color-card))] text-[rgb(var(--color-text))] rounded-lg p-2">
       </div>
 
       <div class="w-40">
         <input type="number" name="productos[${index}][precio_unitario]" min="0" step="0.01"
-               class="w-full border-gray-300 rounded-lg p-2">
+               class="w-full border border-[rgb(var(--color-border))] bg-[rgb(var(--color-card))] text-[rgb(var(--color-text))] rounded-lg p-2">
       </div>
 
     </div>`;

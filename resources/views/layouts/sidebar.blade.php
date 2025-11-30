@@ -78,45 +78,10 @@
 
       </nav>
 
-      <form method="POST" action="{{ route('logout') }}" class="mt-auto">
-          @csrf
-          <button type="submit"
-              class="w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg font-semibold">
-              Salir
-          </button>
-      </form>
-
-      <a href="/register" class="text-sm text-blue-500 hover:underline mt-2">Ir a Register</a>
-
-      <div class="text-center text-sm border-t border-gray-400 dark:border-gray-600 pt-3 mt-3">
+      <div class="text-center text-sm border-t border-gray-400 dark:border-gray-600 pt-3 mt-auto">
         © 2025 OpenBusiness
       </div>
   </div>
-
-  <!-- Script Modo Oscuro -->
-  <script>
-    function toggleTheme() {
-        const html = document.documentElement;
-
-        if (html.classList.contains('dark')) {
-            html.classList.remove('dark');
-            html.classList.add('light');
-            localStorage.setItem('theme', 'light');
-        } else {
-            html.classList.remove('light');
-            html.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-        }
-    }
-
-    // Mantener tema al recargar
-    (function () {
-        const theme = localStorage.getItem('theme');
-        if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
-        }
-    })();
-  </script>
 
 </body>
 </html>
