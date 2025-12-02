@@ -74,6 +74,12 @@ class DespachoController extends Controller
             Pedido::find($request->id_pedido)->update([
                 'estado' => 'Recibido'
             ]);
+            // Registrar historial 
+             Historial::create([
+            'id_usuario' => Auth::id(),
+            'accion' => 'Crear Guía Despacho',
+            'detalles' => "Se creo la Guía de Despacho para el Pedido ID : {$despacho->id_pedido} (ID Despacho {$despacho->id})"
+            ]);
 
             DB::commit();
 
@@ -137,6 +143,12 @@ public function update(Request $request, $id)
                 'cantidad_recibida' => $item['cantidad_recibida']
             ]);
         }
+        // Registrar historial 
+             Historial::create([
+            'id_usuario' => Auth::id(),
+            'accion' => 'Editar Guía Despacho',
+            'detalles' => "Se edito la Guía de Despacho para el Pedido ID : {$despacho->id_pedido} (ID Despacho {$despacho->id})"
+            ]);
 
         DB::commit();
 
@@ -172,6 +184,13 @@ public function destroy($id)
 
         // Eliminar despacho
         $despacho->delete();
+
+        // Registrar historial 
+             Historial::create([
+            'id_usuario' => Auth::id(),
+            'accion' => 'Eliminar Guía Despacho',
+            'detalles' => "Se elimino la Guía de Despacho para el Pedido ID : {$despacho->id_pedido} (ID Despacho {$despacho->id})"
+            ]);
 
         DB::commit();
 

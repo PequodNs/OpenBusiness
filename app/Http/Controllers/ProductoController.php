@@ -65,6 +65,12 @@ class ProductoController extends Controller
                     ]);
                 }
             }
+            // Registrar historial
+            Historial::create([
+            'id_usuario' => Auth::id(),
+            'accion' => 'Crear Producto',
+            'detalles' => "Se creo el producto: {$producto->nombre} (ID {$producto->id})"
+        ]);
 
             DB::commit();
 

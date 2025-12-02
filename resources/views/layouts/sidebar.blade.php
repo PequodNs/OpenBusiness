@@ -69,12 +69,7 @@
         </a>
 
 
-        <a href="{{ route('usuario.index') }}" class="block px-4 py-2 rounded-lg transition-all duration-200
-                  bg-[rgb(var(--color-sidebar))]
-                  text-[rgb(var(--color-text))]
-                  hover:bg-[rgb(var(--color-hover))]">
-          Usuarios
-        </a>
+
 
       </nav>
 

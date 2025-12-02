@@ -68,6 +68,13 @@ class PedidoController extends Controller
             'observaciones' => $request->observaciones,
         ]);
 
+        // Registrar historial 
+         Historial::create([
+        'id_usuario' => Auth::id(),
+        'accion' => 'Editar Pedido',
+        'detalles' => "Se Edito el Pedido con la ID : {$pedido->id} (Fecha {$pedido->fecha_pedido})"
+        ]);
+
         // Redirigir a la vista del pedido con un mensaje de éxito
         return redirect()->route('pedidos.index')
             ->with('success', 'Pedido actualizado correctamente.');
@@ -77,6 +84,13 @@ class PedidoController extends Controller
     {
         $pedido = Pedido::findOrFail($id);
         $pedido->delete();
+
+        // Registrar historial 
+         Historial::create([
+        'id_usuario' => Auth::id(),
+        'accion' => 'Cancelar Pedido',
+        'detalles' => "Se Cancelo el Pedido con la ID : {$pedido->id} (Fecha {$pedido->fecha_pedido})"
+        ]);
 
         return redirect()->route('pedidos.index')->with('success', 'Pedido eliminado correctamente.');
     }
@@ -121,6 +135,13 @@ class PedidoController extends Controller
                 'id_pedido'     => $pedido->id,
             ]);
         }
+
+        // Registrar historial 
+         Historial::create([
+        'id_usuario' => Auth::id(),
+        'accion' => 'Crear Pedido',
+        'detalles' => "Se Creo el Pedido con la ID : {$pedido->id} (Fecha {$pedido->fecha_pedido})"
+        ]);
 
         return redirect()->route('pedidos.index')
                          ->with('success', 'Pedido creado exitosamente');
