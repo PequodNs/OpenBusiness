@@ -35,14 +35,7 @@
                 Modo Oscuro
             </button>
 
-            {{-- Daltonismo Genérico --}}
-            <button onclick="setTheme('daltonico')"
-                class="px-4 py-2 rounded font-semibold
-                       bg-[rgb(var(--color-button-bg))]
-                       text-[rgb(var(--color-button-text))]
-                       hover:bg-[rgb(var(--color-hover))]">
-                Alto Contraste
-            </button>
+           
 
             {{-- Protanopia --}}
             <button onclick="setTheme('protanopia')"

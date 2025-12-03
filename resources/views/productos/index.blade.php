@@ -10,16 +10,27 @@
 
     <!-- Encabezado -->
     <div class="mb-4 flex items-center justify-between">
-        <h2 class="text-2xl font-bold text-[rgb(var(--color-text))]">Lista de Productos</h2>
+    <h2 class="text-2xl font-bold text-[rgb(var(--color-text))]">Lista de Productos</h2>
 
+    <div class="flex gap-2">
         <a href="{{ route('productos.create') }}"
            class="px-4 py-2 rounded-lg shadow 
-                    bg-[rgb(var(--color-hover))] 
-                    text-[rgb(var(--color-text))] 
-                    hover:opacity-80 transition">
+                  bg-[rgb(var(--color-hover))] 
+                  text-[rgb(var(--color-text))] 
+                  hover:opacity-80 transition">
             Agregar Producto
         </a>
+
+        <a href="{{ route('ventas.create') }}"
+           class="px-4 py-2 rounded-lg shadow 
+                  bg-[rgb(var(--color-hover))] 
+                  text-[rgb(var(--color-text))] 
+                  hover:opacity-80 transition">
+            🛒 Vender
+        </a>
     </div>
+</div>
+
 
     @if(session('success'))
         <div class="p-4 rounded-lg mb-4

@@ -53,12 +53,6 @@ class FortifyServiceProvider extends ServiceProvider
 
             if ($user && Hash::check($request->password, $user->password)) {
 
-                // Guardar en historial
-                Historial::create([
-                    'id_usuario' => $user->id,
-                    'accion' => 'Login',
-                    'detalles' => 'Inicio de sesión exitoso',
-                ]);
 
                 return $user;
             }

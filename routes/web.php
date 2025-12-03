@@ -124,4 +124,9 @@ Route::post('/despachos', [DespachoController::class, 'store'])->name('despachos
 Route::get('/despachos/{id}', [DespachoController::class, 'show'])
     ->name('despachos.show');
 
+    use App\Http\Controllers\VentaController;
+
+Route::resource('ventas', VentaController::class);
+
+
 
