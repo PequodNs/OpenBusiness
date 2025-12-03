@@ -62,7 +62,10 @@
             @endforelse
         </tbody>
     </table>
-
+<!-- Paginación -->
+    <div class="mt-6 ">
+        {{ $historial->links('components.pagination') }}
+    </div>
 </div>
 
 @endsection

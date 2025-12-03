@@ -5,7 +5,7 @@
 @section('content')
 <div class="max-w-6xl mx-auto mt-10
             shadow-lg rounded-xl p-6
-            bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))]
+            bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))] 
             border border-[rgb(var(--color-hover))]">
 
     <!-- Encabezado -->
@@ -14,9 +14,9 @@
 
         <a href="{{ route('proveedores.create') }}"
            class="px-4 py-2 rounded-lg shadow 
-                    bg-[rgb(var(--color-hover))] 
-                    text-[rgb(var(--color-text))] 
-                    hover:opacity-80 transition">
+                  bg-[rgb(var(--color-hover))] 
+                  text-[rgb(var(--color-text))] 
+                  hover:opacity-80 transition">
             Agregar Proveedor
         </a>
     </div>
@@ -39,7 +39,6 @@
             @forelse($proveedores as $proveedor)
             <tr class="border-b border-[rgb(var(--color-hover))]
                        hover:bg-[rgb(var(--color-hover))]/10 transition">
-
                 <td class="p-3">{{ $proveedor->id }}</td>
                 <td class="p-3">{{ $proveedor->nombre }}</td>
                 <td class="p-3">{{ $proveedor->contacto }}</td>
@@ -47,7 +46,6 @@
                 <td class="p-3">{{ $proveedor->direccion }}</td>
 
                 <td class="p-3 flex gap-2">
-                    <!-- Editar -->
                     <a href="{{ route('proveedores.edit', $proveedor->id) }}"
                        class="flex items-center gap-1 
                               px-3 py-1.5 rounded-lg 
@@ -57,7 +55,6 @@
                         ✏️ Editar
                     </a>
 
-                    <!-- Eliminar -->
                     <form action="{{ route('proveedores.destroy', $proveedor->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -68,8 +65,8 @@
                         </button>
                     </form>
                 </td>
-
             </tr>
+
             @empty
             <tr>
                 <td colspan="6" class="text-center p-4 text-gray-500">
@@ -80,6 +77,10 @@
         </tbody>
     </table>
 
+    <!-- Paginación -->
+    <div class="mt-6 ">
+        {{ $proveedores->links('components.pagination') }}
+    </div>
+
 </div>
 @endsection
-

@@ -128,7 +128,10 @@
     </tbody>
 
   </table>
-
+<!-- Paginación -->
+    <div class="mt-6 ">
+        {{ $pedidos->links('components.pagination') }}
+    </div>
 </div>
 
 @endsection

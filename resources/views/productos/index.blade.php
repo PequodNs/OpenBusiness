@@ -104,6 +104,10 @@
             @endforeach
         </tbody>
     </table>
-
+<!-- Paginación -->
+    <div class="mt-6 ">
+        {{ $productos->links('components.pagination') }}
+    </div>
+    
 </div>
 @endsection

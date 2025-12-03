@@ -13,7 +13,7 @@ class HistorialController extends Controller
     {
         $historial = Historial::with('usuario')
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(10);
 
         return view('historial.index', compact('historial'));
     }

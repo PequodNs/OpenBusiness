@@ -130,7 +130,10 @@
             @endforelse
         </tbody>
     </table>
-
+<!-- Paginación -->
+    <div class="mt-6 ">
+        {{ $despachos->links('components.pagination') }}
+    </div>
 </div>
 
 @endsection

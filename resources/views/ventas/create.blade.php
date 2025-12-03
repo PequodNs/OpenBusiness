@@ -4,18 +4,23 @@
 
 @section('content')
 
-<div class="bg-white shadow-lg rounded-2xl p-6 max-w-3xl mx-auto mt-10 text-gray-900">
+<div class="max-w-lg mx-auto mt-10 
+            shadow-lg rounded-xl p-6
+            border border-[rgb(var(--color-hover))]
+            bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))]">
 
     <h2 class="text-2xl font-bold text-center mb-6">Registrar Venta</h2>
 
     <form method="POST" action="{{ route('ventas.store') }}">
         @csrf
 
-        <div id="productos-container" class="space-y-4">
+        <div id="productos-container" class="space-y-4 ">
 
-            <div class="producto-item border p-4 rounded-lg bg-gray-50">
+            <div class="producto-item border border-[rgb(var(--color-border))] p-4 rounded-lg 
+                        bg-[rgb(var(--color-hover))]/10">
                 <label class="font-semibold">Producto</label>
-                <select name="productos[0][id_producto]" class="w-full border-gray-300 rounded p-2">
+                <select name="productos[0][id_producto]" 
+                        class="w-full border-[rgb(var(--color-border))] rounded p-2 bg-[rgb(var(--color-bg))]">
                     <option value="">Seleccione</option>
                     @foreach($productos as $p)
                         <option value="{{ $p->id }}">{{ $p->nombre }} (Stock: {{ $p->stock }})</option>
@@ -24,13 +29,14 @@
 
                 <label class="font-semibold mt-2 block">Cantidad</label>
                 <input type="number" name="productos[0][cantidad]" min="1"
-                       class="w-full border-gray-300 rounded p-2">
+                       class="w-full border-[rgb(var(--color-border))] rounded p-2 bg-[rgb(var(--color-bg))]">
             </div>
 
         </div>
 
+        <!-- Botón separado visualmente -->
         <button type="button" id="add-product"
-                class="px-4 py-2 rounded-lg shadow 
+                class="px-4 py-2 rounded-lg shadow mt-4
                     bg-[rgb(var(--color-hover))] 
                     text-[rgb(var(--color-text))] 
                     hover:opacity-80 transition">
@@ -63,9 +69,11 @@ document.getElementById("add-product").addEventListener("click", () => {
     const container = document.getElementById("productos-container");
 
     const html = `
-        <div class="producto-item border p-4 rounded-lg bg-gray-50 mt-3">
+        <div class="producto-item border border-[rgb(var(--color-border))] p-4 rounded-lg 
+                    bg-[rgb(var(--color-hover))]/10 mt-3">
             <label class="font-semibold">Producto</label>
-            <select name="productos[${index}][id_producto]" class="w-full border-gray-300 rounded p-2">
+            <select name="productos[${index}][id_producto]" 
+                    class="w-full border-[rgb(var(--color-border))] rounded p-2 bg-[rgb(var(--color-bg))]">
                 <option value="">Seleccione</option>
                 @foreach($productos as $p)
                     <option value="{{ $p->id }}">{{ $p->nombre }} (Stock: {{ $p->stock }})</option>
@@ -74,7 +82,7 @@ document.getElementById("add-product").addEventListener("click", () => {
 
             <label class="font-semibold mt-2 block">Cantidad</label>
             <input type="number" name="productos[${index}][cantidad]" min="1"
-                   class="w-full border-gray-300 rounded p-2">
+                   class="w-full border-[rgb(var(--color-border))] rounded p-2 bg-[rgb(var(--color-bg))]">
         </div>
     `;
 

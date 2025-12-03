@@ -17,7 +17,8 @@ class PedidoController extends Controller
 
     public function index()
     {
-        $pedidos = Pedido::with('distribuidor')->orderBy('id','desc')->get();
+        $pedidos = Pedido::with('distribuidor')->orderBy('id','desc')
+        ->paginate(10);
         return view('pedidos.index', compact('pedidos'));
     }
 

@@ -27,7 +27,8 @@
     <div>
       <label class="block font-semibold mb-1 text-[rgb(var(--color-text))]">Proveedor</label>
       <select name="id_distribuidor"
-              class="w-full border border-[rgb(var(--color-border))] rounded-lg p-2 bg-[rgb(var(--color-card))] text-[rgb(var(--color-text))] focus:ring-2 focus:ring-[rgb(var(--color-hover))]">
+              class="w-full bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))]
+                       border-[rgb(var(--color-border))] rounded-lg p-2 shadow-sm">
         <option value="">Seleccionar proveedor</option>
 
         @foreach($proveedores as $prov)
@@ -53,7 +54,8 @@
           {{-- Producto --}}
           <div class="flex-1">
             <label class="block font-semibold mb-1">Producto</label>
-            <select name="productos[0][id_producto]" class="w-full border border-[rgb(var(--color-border))] bg-[rgb(var(--color-card))] text-[rgb(var(--color-text))] rounded-lg p-2">
+            <select name="productos[0][id_producto]" class="w-full bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))]
+                       border-[rgb(var(--color-border))] rounded-lg p-2 shadow-sm">
               <option value="">Seleccionar producto</option>
               @foreach($productos as $prod)
                 <option value="{{ $prod->id }}">{{ $prod->nombre }}</option>
@@ -94,7 +96,8 @@
       <div>
         <label class="block font-semibold mb-1">Tipo de Documento</label>
         <select name="tipo_documento"
-                class="w-full border border-[rgb(var(--color-border))] rounded-lg bg-[rgb(var(--color-card))] text-[rgb(var(--color-text))] p-2">
+                class="w-full bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))]
+                       border-[rgb(var(--color-border))] rounded-lg p-2 shadow-sm">
           <option value="">Seleccionar tipo de documento</option>
           <option value="orden_compra">Orden de Compra</option>
           <option value="nota">Nota</option>

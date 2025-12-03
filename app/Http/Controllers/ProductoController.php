@@ -18,7 +18,10 @@ class ProductoController extends Controller
      
     public function index()
     {
-        $productos = Producto::with('distribuidor', 'imagenes')->orderBy('id', 'desc')->get();
+        $productos = Producto::with('distribuidor', 'imagenes')
+        ->orderBy('id', 'desc')
+        ->paginate(10);
+        
         return view('productos.index', compact('productos'));
     }
 

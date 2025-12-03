@@ -12,7 +12,7 @@ class ProveedorController extends Controller
     // Mostrar listado de proveedores
     public function index()
     {
-        $proveedores = Proveedor::all();
+        $proveedores = Proveedor::paginate(10); // ← 10 por página (puedes dejar 5, 15, 20)
         return view('proveedores.index', compact('proveedores'));
     }
 

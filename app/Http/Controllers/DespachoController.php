@@ -16,9 +16,9 @@ use App\Models\Despacho;
 
 class DespachoController extends Controller
 {   
-    public function index()
+   public function index()
 {
-    $despachos = OrdenDespacho::all(); 
+    $despachos = OrdenDespacho::orderBy('id', 'desc')->paginate(10); 
     return view('despacho.index', compact('despachos'));
 }
 

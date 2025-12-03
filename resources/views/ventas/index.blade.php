@@ -4,13 +4,19 @@
 
 @section('content')
 
-<div class="max-w-5xl mx-auto mt-10 bg-white text-gray-900 shadow-lg border rounded-xl p-6">
+<div class="max-w-5xl mx-auto mt-10
+            shadow-lg rounded-xl p-6
+            bg-[rgb(var(--color-bg))] text-[rgb(var(--color-text))]
+            border border-[rgb(var(--color-hover))]">
 
     <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold">Listado de Ventas</h2>
+        <h2 class="text-2xl font-bold text-[rgb(var(--color-text))]">Listado de Ventas</h2>
 
         <a href="{{ route('ventas.create') }}"
-           class="px-4 py-2 rounded-lg shadow bg-gray-800 text-white hover:bg-gray-600 transition">
+           class="px-4 py-2 rounded-lg shadow 
+                  bg-[rgb(var(--color-hover))] 
+                  text-[rgb(var(--color-text))] 
+                  hover:opacity-80 transition">
             + Nueva Venta
         </a>
     </div>
@@ -23,7 +29,8 @@
 
     <table class="w-full border-collapse">
         <thead>
-            <tr class="bg-gray-200 border-b">
+            <tr class="border-b border-[rgb(var(--color-hover))]
+                       bg-[rgb(var(--color-hover))]/20">
                 <th class="p-3 text-left font-semibold">ID</th>
                 <th class="p-3 text-left font-semibold">Fecha</th>
                 <th class="p-3 text-left font-semibold">Usuario</th>
@@ -34,7 +41,9 @@
 
         <tbody>
             @foreach ($ventas as $venta)
-            <tr class="border-b hover:bg-gray-50 transition">
+            <tr class="border-b border-[rgb(var(--color-hover))]
+                       hover:bg-[rgb(var(--color-hover))]/10 transition">
+
                 <td class="p-3">{{ $venta->id }}</td>
                 <td class="p-3">{{ $venta->fecha }}</td>
                 <td class="p-3">{{ $venta->usuario->name ?? 'Usuario Eliminado' }}</td>
@@ -42,7 +51,10 @@
 
                 <td class="p-3 flex gap-2">
                     <a href="{{ route('ventas.show', $venta->id) }}"
-                        class="px-3 py-1.5 rounded-lg bg-gray-800 text-white hover:bg-gray-600 transition">
+                        class="px-3 py-1.5 rounded-lg 
+                               bg-[rgb(var(--color-hover))]
+                               text-[rgb(var(--color-text))]
+                               hover:opacity-80 transition">
                         👁️ Ver
                     </a>
                 </td>
@@ -51,6 +63,10 @@
         </tbody>
     </table>
 
+    <!-- Paginación -->
+    <div class="mt-6 ">
+        {{ $ventas->links('components.pagination') }}
+    </div>
 </div>
 
 @endsection
